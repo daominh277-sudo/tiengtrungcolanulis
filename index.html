@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Tiếng Trung Cô Thu Lan Ulis · New HSK 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer-lib.min.js"></script>
+<script>
+// Stroke-order animation: dùng SVG hoạt hình từ Make Me A Hanzi, nhúng qua <img>
+// nên không cần fetch/CDN/CORS và vẫn chạy khi mở file HTML trực tiếp.
+function strokeSvgUrl(ch){
+  return `https://raw.githubusercontent.com/skishore/makemeahanzi/master/svgs/${ch.codePointAt(0)}.svg`;
+}
+function strokeFallbackUrl(ch){
+  return `https://connum.github.io/hanzivg/hanzi/${ch.codePointAt(0)}.svg`;
+}
+function strokeHint(ch){
+  return {
+    '一':1,'丨':1,'丶':1,'丿':1,'乙':1,'二':2,'十':2,'人':2,'八':2,'入':2,'大':3,'天':4,'你':7,'好':6,'我':7,'是':9,'的':8,'不':4,'了':2,'在':6,'有':6,'个':3,'这':7,'谁':10,'国':8,'中':4,'文':4,'学':8,'生':5,'老':6,'师':6,'家':10,'子':3,'女':3,'儿':2,'年':6,'月':4,'日':4,'口':3,'手':4,'心':4,'水':4,'火':4,'木':4,'金':8,'土':3,'上':3,'下':3,'左':5,'右':5,'看':9,'见':4,'说':9,'话':8,'请':10,'给':9,'茶':9,'买':6,'卖':8,'吃':6,'饭':7,'去':5,'来':7,'坐':7,'车':4,'电':5,'脑':10,'机':6,'号':5,'明':8,'晚':11,'天':4,'今':4,'星':9,'期':12,'休':6,'息':10,'会':6,'做':11,'面':9,'条':7,'菜':11,'新':13,'真':10,'喜':12,'欢':6,'它':5,'很':9,'忙':6,'工作':1
+  }[ch] || 0;
+}
+</script>
+<style>
+:root{--paper:#FBF7F0;--paper2:#F4EADC;--card:#FFFEFC;--ink:#2A211B;--soft:#6E5F52;--faint:#9C8C7C;--red:#C1402A;--red2:#8F2F1F;--jade:#2E5D50;--jade2:#E4EDE8;--gold:#B4822C;--gold2:#F5E9D2;--line:#E6D8C6;--shadow:0 8px 24px -12px rgba(42,33,27,.22);--radius:14px}
+*{box-sizing:border-box}html,body{margin:0;padding:0}body{font-family:'Be Vietnam Pro',system-ui,sans-serif;color:var(--ink);background:radial-gradient(circle at 1px 1px,rgba(42,33,27,.035) 1px,transparent 0) 0 0/22px 22px,var(--paper);min-height:100vh}.hanzi{font-family:'Noto Serif SC',serif}
+.app{display:grid;grid-template-columns:290px 1fr;min-height:100vh}.sidebar{background:linear-gradient(180deg,#3A2A22,#2A1D17);color:#F3E9DD;padding:24px 17px;position:sticky;top:0;height:100vh;overflow:auto}.brand{display:flex;gap:12px;align-items:center;margin-bottom:18px}.seal{width:46px;height:46px;border-radius:10px;background:var(--red);display:grid;place-items:center;font-size:20px;font-weight:900;color:#fff;box-shadow:0 4px 10px #0005}.brand h1{font-size:16px;line-height:1.25;margin:0}.brand p{font-size:11px;color:#C9B8A6;margin:3px 0 0}.contact{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}.contact a{font-size:11.5px;text-decoration:none;color:#F3E9DD;background:#fff1;border:1px solid #fff2;padding:6px 9px;border-radius:999px}.search{position:relative;margin-bottom:14px}.search input{width:100%;padding:10px 12px 10px 32px;border-radius:10px;border:1px solid #fff2;background:#fff1;color:#fff;outline:none}.search span{position:absolute;left:10px;top:9px}.nav{display:flex;flex-direction:column;gap:3px}.lesson-btn{width:100%;display:flex;gap:10px;align-items:center;background:transparent;border:0;color:#E7D9C8;text-align:left;padding:9px;border-radius:10px;cursor:pointer}.lesson-btn:hover{background:#fff1}.lesson-btn.active{background:#C1402A44;color:#fff}.num{width:26px;height:26px;border-radius:7px;background:#fff1;display:grid;place-items:center;font-size:12px;font-weight:800;flex:none}.active .num{background:var(--red)}.lesson-cn{font-size:13.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.lesson-vi{font-size:10.5px;color:#B8A793;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.main{min-width:0}.mobilebar{display:none}.hero{padding:34px 44px 24px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,var(--paper2),transparent)}.hero-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}.hero-seal{width:38px;height:38px;border-radius:9px;background:var(--red);color:#fff;display:grid;place-items:center;font-weight:800}.eyebrow{font-size:12px;color:var(--soft);font-weight:700}.titles{display:flex;gap:16px;align-items:baseline;flex-wrap:wrap}.titles .cn{font-size:clamp(30px,4vw,42px);font-weight:800}.titles .py{font-size:16px;color:var(--soft);font-style:italic}.hero .vi{font-size:17px;color:var(--red2);font-weight:700;margin:4px 0 14px}.chips{display:flex;gap:8px;flex-wrap:wrap}.chip{font-size:12px;padding:6px 10px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--soft)}
+.tabs{display:flex;gap:3px;padding:0 44px;border-bottom:1px solid var(--line);overflow:auto;position:sticky;top:0;background:var(--paper);z-index:10}.tab{background:none;border:0;border-bottom:3px solid transparent;padding:13px 14px 11px;font-weight:700;color:var(--faint);cursor:pointer;white-space:nowrap}.tab.active{color:var(--red2);border-bottom-color:var(--red)}
+.content{padding:28px 44px 70px;max-width:1040px}.section-title{font-size:12.5px;color:var(--faint);font-weight:800;margin:0 0 12px}.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:16px}
+.vocab-table{width:100%;border-collapse:separate;border-spacing:0 8px}.vocab-table td{padding:11px 12px;background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);vertical-align:middle}.vocab-table td:first-child{border-left:1px solid var(--line);border-radius:10px 0 0 10px}.vocab-table td:last-child{border-right:1px solid var(--line);border-radius:0 10px 10px 0}.v-cn{font-size:20px;font-weight:800;width:90px}.v-py{color:var(--red2);font-style:italic;width:120px}.v-pos{font-size:12px;color:var(--faint);width:110px}.stroke-cell{width:300px}.stroke{width:145px;min-height:72px;display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:wrap}.stroke button{border:1px solid var(--line);background:var(--paper2);border-radius:8px;padding:6px 9px;font-size:11px;cursor:pointer}.stroke-wrap{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.stroke-char{display:flex;flex-direction:column;align-items:center;gap:2px}.stroke-label{font-size:10px;color:var(--faint)}.stroke-order-panel{display:none;flex-basis:100%;margin-top:8px;padding:10px;border:1px dashed var(--line);border-radius:10px;background:var(--paper2)}.stroke-order-panel.show{display:block}.stroke-order-title{font-size:12px;font-weight:800;margin-bottom:7px}.stroke-sequence{font-size:11px;color:var(--faint);margin-bottom:8px}.stroke-steps{display:flex;flex-wrap:wrap;gap:7px}.stroke-step{width:68px;padding:6px 4px;border:1px solid var(--line);border-radius:9px;background:var(--card);text-align:center;cursor:pointer}.stroke-step:hover{transform:translateY(-1px)}.stroke-step-num{font-weight:800;font-size:11px;margin-bottom:2px}.stroke-step-char{width:56px;height:56px;margin:auto}.stroke-loading{font-size:11px;color:var(--faint)}.stroke-source{font-size:10.5px;color:var(--faint);line-height:1.5;margin-bottom:8px}.stroke-source::before{content:'🌐 ';}.stroke-svg{width:150px;height:150px;display:block}.stroke-note{font-size:11px;color:var(--faint);line-height:1.5;margin-top:6px}.stroke-step-char{font-size:30px}
+.stroke-animation-box{display:grid;grid-template-columns:160px 1fr;gap:12px;align-items:center;margin:10px 0 14px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+.stroke-animation-canvas{width:150px;height:150px;margin:auto;display:flex;align-items:center;justify-content:center}
+.stroke-animation-controls{display:flex;flex-wrap:wrap;gap:7px;margin:7px 0}
+.stroke-animation-controls button{border:1px solid var(--line);background:var(--paper2);border-radius:8px;padding:7px 10px;font-size:12px;cursor:pointer}
+.stroke-current{font-size:12px;font-weight:700}
+.stroke-current small{font-weight:400;color:var(--faint)}
+.stroke-step.active{outline:2px solid var(--red2)}
+@media(max-width:640px){.stroke-animation-box{grid-template-columns:1fr}.stroke-animation-canvas{width:130px;height:130px}}
+
+.dialogue{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;margin-bottom:18px}.dialogue-head{display:flex;justify-content:space-between;gap:10px;align-items:center}.label{background:var(--red);color:#fff;border-radius:6px;padding:4px 9px;font-size:11px;font-weight:800}.audio-btn,.primary,.secondary{border:0;border-radius:9px;padding:9px 12px;font:inherit;font-weight:800;cursor:pointer}.audio-btn{background:var(--jade2);color:var(--jade)}.line{display:flex;gap:12px;margin:12px 0}.speaker{flex:0 0 90px;text-align:right;font-size:12px;font-weight:800;color:var(--jade);padding-top:5px}.bubble{background:var(--paper2);border-radius:12px 12px 12px 3px;padding:10px 13px;flex:1}.line-cn{font-size:17px;font-weight:700}.line-py{font-size:12px;color:var(--faint);font-style:italic;margin-top:2px}.translation{display:none;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-size:13px;color:var(--soft);white-space:pre-line;line-height:1.7}.translation.show{display:block}.translate-btn{border:0;background:none;color:var(--red2);font-weight:800;cursor:pointer;margin-top:6px}
+.grammar{border-left:4px solid var(--jade);border-radius:0 var(--radius) var(--radius) 0}.grammar h3{margin:0 0 7px;color:var(--jade);font-size:15px}.grammar p{line-height:1.7;margin:0 0 8px}.example{display:inline-block;background:var(--jade2);padding:6px 10px;border-radius:8px;margin:3px;font-family:'Noto Serif SC',serif}
+.flash{text-align:center}.flashcard{max-width:380px;height:220px;margin:0 auto 18px;perspective:1200px;cursor:pointer}.flash-inner{height:100%;transition:.45s;transform-style:preserve-3d;position:relative}.flashcard.flipped .flash-inner{transform:rotateY(180deg)}.face{position:absolute;inset:0;backface-visibility:hidden;border:1px solid var(--line);border-radius:18px;display:grid;place-items:center;padding:20px;box-shadow:var(--shadow)}.front{background:var(--card)}.front .big{font-size:54px;font-weight:800}.back{background:var(--red);color:#fff;transform:rotateY(180deg)}.back .py{font-size:21px;font-style:italic}.back .vi{font-size:19px;font-weight:800}.flash-controls{display:flex;justify-content:center;gap:12px;align-items:center}.small-btn{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:9px 13px;font-weight:700;cursor:pointer}
+.student-box{background:linear-gradient(135deg,#fff,#F7E2DB);border:1px solid #E5C5B9;border-radius:16px;padding:18px;margin-bottom:20px}.student-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field label{display:block;font-size:12px;font-weight:800;margin-bottom:5px}.field input{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:9px;background:#fff;font:inherit;outline:none}.field input:focus{border-color:var(--red)}
+.type-badge{display:inline-flex;align-items:center;gap:7px;padding:6px 10px;border-radius:999px;background:var(--paper2);font-size:12px;font-weight:800;color:var(--red2);margin-bottom:10px}.q{font-weight:700;line-height:1.6;margin-bottom:10px}.options{display:grid;gap:7px}.option{display:flex;gap:8px;align-items:flex-start;border:1px solid var(--line);padding:9px 10px;border-radius:9px;background:#fff;cursor:pointer}.option:hover{background:var(--paper2)}.answer-input,.select{width:100%;padding:10px;border:1px solid var(--line);border-radius:9px;font:inherit;background:#fff}.reorder{display:flex;flex-wrap:wrap;gap:7px;min-height:42px}.word-btn{border:1px solid var(--line);background:var(--paper2);border-radius:8px;padding:7px 10px;font-family:'Noto Serif SC',serif;cursor:pointer}.word-btn.used{opacity:.35}.chosen{margin-top:8px;min-height:40px;border:1px dashed var(--line);border-radius:9px;padding:8px;line-height:1.8}.match-row{display:grid;grid-template-columns:120px 1fr;gap:10px;align-items:center;margin:7px 0}.match-word{font-family:'Noto Serif SC',serif;font-size:18px;font-weight:800}.situation{background:var(--gold2);border:1px solid #E9D4A0;padding:10px 12px;border-radius:10px;margin-bottom:9px;color:#6B4E14}.result{display:none;background:var(--jade2);border:1px solid #C9DED4;border-radius:14px;padding:16px;margin:16px 0}.result.show{display:block}.score{font-size:28px;font-weight:900;color:var(--jade)}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.primary{background:var(--red);color:#fff}.secondary{background:var(--jade);color:#fff}.note{font-size:12px;color:var(--soft);line-height:1.6}.footer{text-align:center;border-top:1px solid var(--line);padding-top:20px;color:var(--faint);font-size:12px;margin-top:30px}
+@media(max-width:940px){.app{grid-template-columns:1fr}.sidebar{position:relative;height:auto}.mobilebar{display:flex;position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);padding:10px 14px;justify-content:space-between}.mobilebar button{background:var(--red);color:#fff;border:0;border-radius:8px;padding:8px 11px;font-weight:800}.sidebar.collapsed{display:none}.hero{padding:26px 18px 20px}.tabs{padding:0 14px;top:48px}.content{padding:22px 18px 60px}}
+@media(max-width:640px){.student-grid{grid-template-columns:1fr}.vocab-table{font-size:13px}.vocab-table td:nth-child(3){display:none}.stroke-cell{width:120px}.stroke{width:105px;height:105px}.line{gap:7px}.speaker{flex-basis:70px;font-size:11px}.dialogue-head{align-items:flex-start;flex-direction:column}}
+</style></head><body>
+<div class="mobilebar"><strong>中 · HSK1 · Cô Thu Lan Ulis</strong><button id="menuToggle">Bài học ☰</button></div>
+<div class="app"><aside class="sidebar" id="sidebar"><div class="brand"><div class="seal">中</div><div><h1>Tiếng Trung Cô Thu Lan Ulis</h1><p>New HSK 教程 1 · Giảng viên Đại học</p></div></div>
+<div class="contact"><a href="tel:0912666259">📞 0912 666 259</a><a href="https://www.facebook.com/do.thulan.7" target="_blank" rel="noopener">📘 Facebook</a></div>
+<div style="margin:10px 0 16px"><a href="https://tiengtrungtoancau.com/" target="_blank" rel="noopener noreferrer" aria-label="Mở website Tiếng Trung Toàn Cầu" style="display:block;text-align:center;text-decoration:none;color:#fff;background:#C1402A;border:1px solid #ffffff22;padding:10px 12px;border-radius:10px;font-weight:800;font-size:12px">🌐 Mở tiengtrungtoancau.com ↗</a><div style="margin-top:6px;text-align:center;font-size:10px;color:#9C8C7C">Liên kết mở bằng HTTPS: https://tiengtrungtoancau.com/</div></div>
+<div class="search"><span>🔎</span><input id="searchInput" placeholder="Tìm bài học..."></div><div class="nav" id="lessonNav"></div></aside>
+<main class="main"><div class="hero" id="hero"></div><div class="tabs" id="tabs"></div><div class="content" id="content"></div></main></div>
+<script>const LESSONS = [
+{
+  id:1, cn:"AI小语，你好！", pinyin:"AI Xiǎoyǔ, nǐ hǎo!", vi:"Chào Tiểu Ngữ AI!",
+  objectives:["Nghe hiểu và dùng được các câu chào hỏi, cảm ơn, tạm biệt lịch sự","Hiểu văn hoá giao tiếp tiếng Trung, biết dùng đại từ nhân xưng kính trọng \"您\""],
+  warmup: null,
+  vocab:[
+    {cn:"你好",pinyin:"nǐ hǎo",pos:"",vi:"xin chào"},
+    {cn:"王老师",pinyin:"Wáng lǎoshī",pos:"danh từ riêng",vi:"cô/thầy Vương"},
+    {cn:"大家",pinyin:"dàjiā",pos:"đại từ",vi:"mọi người"},
+    {cn:"好",pinyin:"hǎo",pos:"tính từ",vi:"tốt, khoẻ"},
+    {cn:"学生",pinyin:"xuéshēng",pos:"danh từ",vi:"học sinh, sinh viên"},
+    {cn:"们",pinyin:"men",pos:"hậu tố",vi:"(hậu tố chỉ số nhiều)"},
+    {cn:"老师",pinyin:"lǎoshī",pos:"danh từ",vi:"giáo viên, thầy/cô"},
+    {cn:"您",pinyin:"nín",pos:"đại từ",vi:"ngài, ông/bà (kính trọng)"},
+    {cn:"你们",pinyin:"nǐmen",pos:"đại từ",vi:"các bạn (số nhiều)"},
+    {cn:"谢谢",pinyin:"xièxie",pos:"động từ",vi:"cảm ơn"},
+    {cn:"不客气",pinyin:"bú kèqi",pos:"",vi:"không có gì"},
+    {cn:"同学",pinyin:"tóngxué",pos:"danh từ",vi:"bạn học"},
+    {cn:"再见",pinyin:"zàijiàn",pos:"động từ",vi:"tạm biệt"}
+  ],
+  dialogues:[
+    {label:"Bài khoá 1", situation:"Ngày đầu khai giảng, tại văn phòng, Vương Nhất Phi chào trợ giảng AI Tiểu Ngữ.",
+     lines:[
+       {s:"Vương Nhất Phi",cn:"AI小语，你好！",py:"AI Xiǎoyǔ, nǐ hǎo!"},
+       {s:"Tiểu Ngữ",cn:"王老师，你好！",py:"Wáng lǎoshī, nǐ hǎo!"}
+     ], vi:"Vương Nhất Phi: Chào Tiểu Ngữ!\nTiểu Ngữ: Chào cô Vương!"},
+    {label:"Bài khoá 2", situation:"Ngày đầu khai giảng, trên lớp, học sinh học cách chào hỏi.",
+     lines:[
+       {s:"Vương Nhất Phi",cn:"大家好！",py:"Dàjiā hǎo!"},
+       {s:"Học sinh",cn:"老师，您好！",py:"Lǎoshī, nín hǎo!"},
+       {s:"Tiểu Ngữ",cn:"你们好！",py:"Nǐmen hǎo!"},
+       {s:"Học sinh",cn:"你好，小语！",py:"Nǐ hǎo, Xiǎoyǔ!"}
+     ], vi:"Vương Nhất Phi: Chào cả lớp!\nHọc sinh: Chào cô ạ!\nTiểu Ngữ: Chào các bạn!\nHọc sinh: Chào Tiểu Ngữ!"},
+    {label:"Bài khoá 3", situation:"Ngày đầu khai giảng, trên lớp, học sinh học cách cảm ơn và tạm biệt.",
+     lines:[
+       {s:"Học sinh",cn:"谢谢！",py:"Xièxie!"},
+       {s:"Tiểu Ngữ",cn:"不客气！",py:"Bú kèqi!"},
+       {s:"Vương Nhất Phi",cn:"同学们，再见！",py:"Tóngxuémen, zàijiàn!"},
+       {s:"Học sinh",cn:"老师，再见！",py:"Lǎoshī, zàijiàn!"}
+     ], vi:"Học sinh: Cảm ơn ạ!\nTiểu Ngữ: Không có gì!\nVương Nhất Phi: Tạm biệt các em!\nHọc sinh: Tạm biệt cô!"}
+  ],
+  grammar:[],
+  tips:["\"您\" là đại từ kính trọng, dùng khi nói với người lớn tuổi hoặc người mình tôn trọng."],
+  exercises:[
+    {type:"fill", instruction:"Điền từ thích hợp vào chỗ trống.", bank:["你好","谢谢","再见","不客气","您"],
+     items:[
+       {q:"A：____！ B：你好！", a:"你好"},
+       {q:"A：谢谢！ B：____！", a:"不客气"},
+       {q:"A：老师，____好！(kính trọng)", a:"您"},
+       {q:"A：老师，____！ B：同学们，再见！", a:"再见"}
+     ]},
+    {type:"translate", instruction:"Dịch sang tiếng Trung.",
+     items:[
+       {q:"Chào mọi người!", a:"大家好！"},
+       {q:"Chào các bạn!", a:"你们好！"},
+       {q:"Cảm ơn cô ạ!", a:"谢谢老师！"}
+     ]}
+  ]
+},
+{
+  id:2, cn:"我叫李文", pinyin:"Wǒ jiào Lǐ Wén", vi:"Tôi tên là Lý Văn",
+  objectives:["Tự giới thiệu bằng tên tiếng Trung, nghe hiểu người khác tự giới thiệu","Dùng \"对不起\" và \"没关系\" để xin lỗi và đáp lại","Nắm được trật tự từ cơ bản trong câu tiếng Trung","Hiểu cấu trúc tên người Trung Quốc"],
+  warmup:null,
+  vocab:[
+    {cn:"请问",pinyin:"qǐngwèn",pos:"động từ",vi:"xin hỏi"},
+    {cn:"你",pinyin:"nǐ",pos:"đại từ",vi:"bạn (số ít)"},
+    {cn:"叫",pinyin:"jiào",pos:"động từ",vi:"tên là, gọi là"},
+    {cn:"什么",pinyin:"shénme",pos:"đại từ",vi:"gì, cái gì"},
+    {cn:"名字",pinyin:"míngzi",pos:"danh từ",vi:"tên"},
+    {cn:"我",pinyin:"wǒ",pos:"đại từ",vi:"tôi"},
+    {cn:"不",pinyin:"bù",pos:"phó từ",vi:"không"},
+    {cn:"是",pinyin:"shì",pos:"động từ",vi:"là"},
+    {cn:"对不起",pinyin:"duìbuqǐ",pos:"động từ",vi:"xin lỗi"},
+    {cn:"没关系",pinyin:"méi guānxi",pos:"",vi:"không sao đâu"},
+    {cn:"没事",pinyin:"méishì",pos:"động từ",vi:"không sao"},
+    {cn:"很",pinyin:"hěn",pos:"phó từ",vi:"rất"},
+    {cn:"高兴",pinyin:"gāoxìng",pos:"tính từ",vi:"vui, vui mừng"},
+    {cn:"认识",pinyin:"rènshi",pos:"động từ",vi:"quen biết, nhận biết"},
+    {cn:"也",pinyin:"yě",pos:"phó từ",vi:"cũng"}
+  ],
+  dialogues:[
+    {label:"Bài khoá 1", situation:"Trong lớp học, Vương Nhất Phi đang làm quen với học sinh.",
+     lines:[
+       {s:"Vương Nhất Phi",cn:"请问，你叫什么名字？",py:"Qǐngwèn, nǐ jiào shénme míngzi?"},
+       {s:"Trần Thiên Trung",cn:"我叫陈天中。",py:"Wǒ jiào Chén Tiānzhōng."}
+     ], vi:"Vương Nhất Phi: Xin hỏi, bạn tên là gì?\nTrần Thiên Trung: Tôi tên là Trần Thiên Trung."},
+    {label:"Bài khoá 2", situation:"Trên sân trường, Trần Thiên Trung nhận nhầm người.",
+     lines:[
+       {s:"Trần Thiên Trung",cn:"你好，安妮！",py:"Nǐ hǎo, Ānnī!"},
+       {s:"Bạch Gia Nguyệt",cn:"你好，陈天中！我不是安妮，我是白家月。",py:"Nǐ hǎo, Chén Tiānzhōng! Wǒ bú shì Ānnī, wǒ shì Bái Jiāyuè."},
+       {s:"Trần Thiên Trung",cn:"对不起！",py:"Duìbuqǐ!"},
+       {s:"Bạch Gia Nguyệt",cn:"没关系！",py:"Méi guānxi!"}
+     ], vi:"Trần Thiên Trung: Chào Annie!\nBạch Gia Nguyệt: Chào Trần Thiên Trung! Tôi không phải Annie, tôi là Bạch Gia Nguyệt.\nTrần Thiên Trung: Xin lỗi!\nBạch Gia Nguyệt: Không sao đâu!"},
+    {label:"Bài khoá 3", situation:"Trên sân trường, Lý Văn và Bạch Gia Nguyệt gặp nhau lần đầu.",
+     lines:[
+       {s:"Lý Văn",cn:"你好！我叫李文。",py:"Nǐ hǎo! Wǒ jiào Lǐ Wén."},
+       {s:"Bạch Gia Nguyệt",cn:"你好！我叫白家月。",py:"Nǐ hǎo! Wǒ jiào Bái Jiāyuè."},
+       {s:"Lý Văn",cn:"很高兴认识你。",py:"Hěn gāoxìng rènshi nǐ."},
+       {s:"Bạch Gia Nguyệt",cn:"认识你我也很高兴。",py:"Rènshi nǐ wǒ yě hěn gāoxìng."}
+     ], vi:"Lý Văn: Chào! Tôi tên là Lý Văn.\nBạch Gia Nguyệt: Chào! Tôi tên là Bạch Gia Nguyệt.\nLý Văn: Rất vui được quen bạn.\nBạch Gia Nguyệt: Quen bạn tôi cũng rất vui."}
+  ],
+  grammar:[
+    {title:"Trật tự từ cơ bản trong tiếng Trung", vi:"Trật tự cơ bản: Chủ ngữ + Vị ngữ + Tân ngữ. Ví dụ: 我(CN) 叫(VN) 陈天中(TN).", examples:["你叫什么名字？","我叫白家月。","我是学生。"]}
+  ],
+  tips:["Trong khẩu ngữ còn nói \"没事\" hoặc \"没事没事\".","Tên người Trung Quốc theo cấu trúc: Họ + Tên."],
+  exercises:[
+    {type:"fill", instruction:"Điền từ thích hợp.", bank:["名字","是","的","也","高兴"],
+     items:[
+       {q:"请问，你叫什么____？", a:"名字"},
+       {q:"我____学生，不____老师。", a:"是 / 是"},
+       {q:"很____认识你！", a:"高兴"},
+       {q:"我____很高兴认识你。", a:"也"}
+     ]},
+    {type:"translate", instruction:"Dịch sang tiếng Trung.",
+     items:[
+       {q:"Xin hỏi, bạn tên là gì?", a:"请问，你叫什么名字？"},
+       {q:"Xin lỗi! – Không sao đâu!", a:"对不起！— 没关系！"},
+       {q:"Rất vui được quen bạn.", a:"很高兴认识你。"}
+     ]}
+  ]
+},
+{
+  id:3, cn:"我是中国人", pinyin:"Wǒ shì Zhōngguó rén", vi:"Tôi là người Trung Quốc",
+  objectives:["Nghe hiểu và dùng câu chữ \"是\" để diễn đạt sự đồng nhất/loại thuộc","Nắm cách dùng trợ từ kết cấu \"的\"","Nắm cách dùng câu hỏi có/không với \"吗\""],
+  warmup:null,
+  vocab:[
+    {cn:"人",pinyin:"rén",pos:"danh từ",vi:"người"},
+    {cn:"的",pinyin:"de",pos:"trợ từ",vi:"(trợ từ sở hữu/định ngữ)"},
+    {cn:"这",pinyin:"zhè",pos:"đại từ",vi:"này"},
+    {cn:"谁",pinyin:"shéi/shuí",pos:"đại từ",vi:"ai"},
+    {cn:"女朋友",pinyin:"nǚpéngyou",pos:"danh từ",vi:"bạn gái"},
+    {cn:"哪",pinyin:"nǎ",pos:"đại từ",vi:"nào"},
+    {cn:"国",pinyin:"guó",pos:"danh từ",vi:"nước, quốc gia"},
+    {cn:"她",pinyin:"tā",pos:"đại từ",vi:"cô ấy"},
+    {cn:"喂",pinyin:"wèi",pos:"thán từ",vi:"a lô, này"},
+    {cn:"姐姐",pinyin:"jiějie",pos:"danh từ",vi:"chị gái"},
+    {cn:"工作",pinyin:"gōngzuò",pos:"danh từ",vi:"công việc"},
+    {cn:"还",pinyin:"hái",pos:"phó từ",vi:"vẫn còn"},
+    {cn:"忙",pinyin:"máng",pos:"tính từ",vi:"bận"},
+    {cn:"吗",pinyin:"ma",pos:"trợ từ",vi:"(trợ từ nghi vấn)"},
+    {cn:"对",pinyin:"duì",pos:"tính từ",vi:"đúng"},
+    {cn:"太",pinyin:"tài",pos:"phó từ",vi:"quá"},
+    {cn:"我们",pinyin:"wǒmen",pos:"đại từ",vi:"chúng tôi"},
+    {cn:"想",pinyin:"xiǎng",pos:"động từ",vi:"nhớ"}
+  ],
+  properNouns:[{cn:"中国",pinyin:"Zhōngguó",vi:"Trung Quốc"},{cn:"法国",pinyin:"Fǎguó",vi:"Pháp"},{cn:"中文",pinyin:"Zhōngwén",vi:"tiếng Trung"},{cn:"泰国",pinyin:"Tàiguó",vi:"Thái Lan"}],
+  dialogues:[
+    {label:"Bài khoá 1", situation:"Trên sân trường, Lý Văn và Bạch Gia Nguyệt tiếp tục trò chuyện.",
+     lines:[
+       {s:"Lý Văn",cn:"我是中国人。",py:"Wǒ shì Zhōngguó rén."},
+       {s:"Bạch Gia Nguyệt",cn:"我是法国人。我的中文老师也是中国人。",py:"Wǒ shì Fǎguó rén. Wǒ de Zhōngwén lǎoshī yě shì Zhōngguó rén."}
+     ], vi:"Lý Văn: Tôi là người Trung Quốc.\nBạch Gia Nguyệt: Tôi là người Pháp. Giáo viên tiếng Trung của tôi cũng là người Trung Quốc."},
+    {label:"Bài khoá 2", situation:"Trong lớp, sau giờ học, Annie xem ảnh trong điện thoại của Trần Thiên Trung.",
+     lines:[
+       {s:"Annie",cn:"这是谁？",py:"Zhè shì shéi?"},
+       {s:"Trần Thiên Trung",cn:"这是我女朋友。",py:"Zhè shì wǒ nǚpéngyou."},
+       {s:"Annie",cn:"你女朋友是哪国人？",py:"Nǐ nǚpéngyou shì nǎ guó rén?"},
+       {s:"Trần Thiên Trung",cn:"她也是泰国人。",py:"Tā yě shì Tàiguó rén."}
+     ], vi:"Annie: Đây là ai?\nTrần Thiên Trung: Đây là bạn gái tôi.\nAnnie: Bạn gái bạn là người nước nào?\nTrần Thiên Trung: Cô ấy cũng là người Thái Lan."},
+    {label:"Bài khoá 3", situation:"Ở nhà, Vương Nhất Tuyết gọi video cho Vương Nhất Phi.",
+     lines:[
+       {s:"Vương Nhất Tuyết",cn:"喂，一飞！",py:"Wèi, Yīfēi!"},
+       {s:"Vương Nhất Phi",cn:"姐姐！",py:"Jiějie!"},
+       {s:"Vương Nhất Tuyết",cn:"你工作还忙吗？",py:"Nǐ gōngzuò hái máng ma?"},
+       {s:"Vương Nhất Phi",cn:"对，还很忙。你也很忙吗？",py:"Duì, hái hěn máng. Nǐ yě hěn máng ma?"},
+       {s:"Vương Nhất Tuyết",cn:"我不太忙。我们很想你。",py:"Wǒ bú tài máng. Wǒmen hěn xiǎng nǐ."},
+       {s:"Vương Nhất Phi",cn:"我也想你们。",py:"Wǒ yě xiǎng nǐmen."}
+     ], vi:"Vương Nhất Tuyết: A lô, Nhất Phi!\nVương Nhất Phi: Chị ơi!\nVương Nhất Tuyết: Công việc em vẫn bận chứ?\nVương Nhất Phi: Vâng, vẫn bận lắm. Chị cũng bận lắm à?\nVương Nhất Tuyết: Chị không bận lắm. Chúng tôi rất nhớ em.\nVương Nhất Phi: Em cũng nhớ mọi người."}
+  ],
+  grammar:[
+    {title:"Câu chữ \"是\"", vi:"Diễn đạt sự đồng nhất hoặc loại thuộc của người/vật. Phủ định: \"不是\".", examples:["我是法国人。","她是中文老师。","我老师不是法国人。"]},
+    {title:"Trợ từ kết cấu \"的\"", vi:"Đặt giữa định ngữ và trung tâm ngữ, biểu thị quan hệ sở hữu. Nếu trước \"的\" là đại từ nhân xưng, sau là danh từ chỉ người thân/người quen thì có thể lược bỏ \"的\".", examples:["白家月的中文老师","你的名字","我老师 (= 我的老师)","我学生 (= 我的学生)"]},
+    {title:"Câu hỏi có/không với \"吗\"", vi:"\"吗\" là trợ từ ngữ khí, đặt cuối câu để tạo câu hỏi. Cấu trúc: ……吗？", examples:["你工作忙吗？","你也很忙吗？"]}
+  ],
+  tips:["\"谁\" cũng có thể đọc là \"shuí\"."],
+  exercises:[
+    {type:"fill", instruction:"Điền từ thích hợp.", bank:["吗","的","不是","还","太"],
+     items:[
+       {q:"你工作忙____？", a:"吗"},
+       {q:"这是你____女朋友吗？", a:"的"},
+       {q:"我____法国人，我是中国人。", a:"不是"},
+       {q:"我____很忙，你呢？", a:"还"}
+     ]},
+    {type:"translate", instruction:"Dịch sang tiếng Trung.",
+     items:[
+       {q:"Tôi là người Trung Quốc, không phải người Pháp.", a:"我是中国人，不是法国人。"},
+       {q:"Bạn gái bạn là người nước nào?", a:"你女朋友是哪国人？"},
+       {q:"Chúng tôi rất nhớ chị.", a:"我们很想你。"}
+     ]}
+  ]
+},
+{
+  id:4, cn:"我有两个孩子", pinyin:"Wǒ yǒu liǎng gè háizi", vi:"Tôi có hai đứa con",
+  objectives:["Dùng câu \"有\" (1) diễn đạt sự sở hữu người/vật","Nắm cấu trúc \"A……，B呢？\"","Nắm cách dùng số từ, lượng từ trong bài","Biết cách người Trung Quốc hỏi đáp về tuổi tác"],
+  warmup:[{cn:"五",pinyin:"wǔ",vi:"số 5"},{cn:"哥哥",pinyin:"gēge",vi:"anh trai"},{cn:"学生",pinyin:"xuésheng",vi:"học sinh"},{cn:"六十岁",pinyin:"liùshí suì",vi:"60 tuổi"},{cn:"妈妈",pinyin:"māma",vi:"mẹ"},{cn:"老师",pinyin:"lǎoshī",vi:"giáo viên"}],
+  vocab:[
+    {cn:"有",pinyin:"yǒu",pos:"động từ",vi:"có"},
+    {cn:"多少",pinyin:"duōshao",pos:"đại từ",vi:"bao nhiêu"},
+    {cn:"个",pinyin:"gè",pos:"lượng từ",vi:"cái, con (lượng từ chung)"},
+    {cn:"哥哥",pinyin:"gēge",pos:"danh từ",vi:"anh trai"},
+    {cn:"呢",pinyin:"ne",pos:"trợ từ",vi:"(trợ từ nghi vấn, còn... thì sao?)"},
+    {cn:"没有",pinyin:"méiyǒu",pos:"động từ",vi:"không có"},
+    {cn:"家",pinyin:"jiā",pos:"danh từ",vi:"nhà, gia đình"},
+    {cn:"几",pinyin:"jǐ",pos:"đại từ",vi:"mấy"},
+    {cn:"口",pinyin:"kǒu",pos:"lượng từ",vi:"khẩu (lượng từ đếm người trong nhà)"},
+    {cn:"爸爸",pinyin:"bàba",pos:"danh từ",vi:"bố"},
+    {cn:"妈妈",pinyin:"māma",pos:"danh từ",vi:"mẹ"},
+    {cn:"妹妹",pinyin:"mèimei",pos:"danh từ",vi:"em gái"},
+    {cn:"和",pinyin:"hé",pos:"liên từ",vi:"và"},
+    {cn:"儿子",pinyin:"érzi",pos:"danh từ",vi:"con trai"},
+    {cn:"孩子",pinyin:"háizi",pos:"danh từ",vi:"con cái"},
+    {cn:"女儿",pinyin:"nǚ'ér",pos:"danh từ",vi:"con gái"},
+    {cn:"岁",pinyin:"suì",pos:"lượng từ",vi:"tuổi"},
+    {cn:"他",pinyin:"tā",pos:"đại từ",vi:"anh ấy"},
+    {cn:"今年",pinyin:"jīnnián",pos:"danh từ",vi:"năm nay"},
+    {cn:"多",pinyin:"duō",pos:"đại từ",vi:"bao (nhiêu)"},
+    {cn:"大",pinyin:"dà",pos:"tính từ",vi:"lớn, nhiều tuổi"}
+  ],
+  dialogues:[
+    {label:"Bài khoá 1", situation:"Ở nhà, Lưu Minh và Vương Nhất Tuyết trò chuyện về Nhất Phi.",
+     lines:[
+       {s:"Lưu Minh",cn:"一飞忙吗？",py:"Yīfēi máng ma?"},
+       {s:"Vương Nhất Tuyết",cn:"她很忙。",py:"Tā hěn máng."},
+       {s:"Lưu Minh",cn:"她有多少个学生？",py:"Tā yǒu duōshao gè xuésheng?"},
+       {s:"Vương Nhất Tuyết",cn:"她有二十个学生。",py:"Tā yǒu èrshí gè xuésheng."}
+     ], vi:"Lưu Minh: Nhất Phi bận không?\nVương Nhất Tuyết: Cô ấy bận lắm.\nLưu Minh: Cô ấy có bao nhiêu học sinh?\nVương Nhất Tuyết: Cô ấy có hai mươi học sinh."},
+    {label:"Bài khoá 2", situation:"Tại công ty, Vương Nhất Tuyết và Dương Đồng Lạc trò chuyện lúc giải lao.",
+     lines:[
+       {s:"Vương Nhất Tuyết",cn:"我有两个哥哥，你呢？",py:"Wǒ yǒu liǎng gè gēge, nǐ ne?"},
+       {s:"Dương Đồng Lạc",cn:"我没有哥哥。",py:"Wǒ méiyǒu gēge."},
+       {s:"Vương Nhất Tuyết",cn:"你家有几口人？",py:"Nǐ jiā yǒu jǐ kǒu rén?"},
+       {s:"Dương Đồng Lạc",cn:"我家有四口人，爸爸、妈妈、妹妹和我。",py:"Wǒ jiā yǒu sì kǒu rén, bàba, māma, mèimei hé wǒ."}
+     ], vi:"Vương Nhất Tuyết: Tôi có hai anh trai, còn bạn thì sao?\nDương Đồng Lạc: Tôi không có anh trai.\nVương Nhất Tuyết: Nhà bạn có mấy người?\nDương Đồng Lạc: Nhà tôi có bốn người: bố, mẹ, em gái và tôi."},
+    {label:"Bài khoá 3", situation:"Trên phố, Vương Nhất Tuyết dẫn con trai tình cờ gặp Dương Đồng Lạc.",
+     lines:[
+       {s:"Dương Đồng Lạc",cn:"这是您儿子吗？",py:"Zhè shì nín érzi ma?"},
+       {s:"Vương Nhất Tuyết",cn:"是的。我有两个孩子，一个儿子，一个女儿。",py:"Shì de. Wǒ yǒu liǎng gè háizi, yí gè érzi, yí gè nǚ'ér."},
+       {s:"Dương Đồng Lạc",cn:"您儿子几岁？",py:"Nín érzi jǐ suì?"},
+       {s:"Vương Nhất Tuyết",cn:"他今年五岁。",py:"Tā jīnnián wǔ suì."},
+       {s:"Dương Đồng Lạc",cn:"您女儿多大？",py:"Nín nǚ'ér duō dà?"},
+       {s:"Vương Nhất Tuyết",cn:"她今年十二。",py:"Tā jīnnián shí'èr."}
+     ], vi:"Dương Đồng Lạc: Đây là con trai chị à?\nVương Nhất Tuyết: Vâng. Tôi có hai con, một trai một gái.\nDương Đồng Lạc: Con trai chị mấy tuổi?\nVương Nhất Tuyết: Cháu năm nay 5 tuổi.\nDương Đồng Lạc: Con gái chị bao nhiêu tuổi?\nVương Nhất Tuyết: Cháu năm nay 12 tuổi."}
+  ],
+  grammar:[
+    {title:"Câu \"有\" (1)", vi:"\"有\" trong bài này biểu thị sự sở hữu. Phủ định là \"没/没有\".", examples:["我有两个哥哥。","我没有哥哥。","你家有几口人？"]},
+    {title:"Cách viết/đọc số từ 100 trở lên, đến 10000; cách đọc số \"2\"", vi:"100=一百, 1000=一千, 10000=一万. Số \"2\" viết/đọc là \"二(èr)\" hoặc \"两(liǎng)\": dùng \"二\" trong số thứ tự (第二), dùng \"两\" trước lượng từ (两个, 两口人).", examples:["一百 (100)","二百零八 (208)","一千五百二十八 (1528)","两个人","两本书"]},
+    {title:"Trợ từ ngữ khí \"呢\" (1)", vi:"\"呢\" cuối câu, hỏi lại về tình huống đã nêu ở vế trước. Cấu trúc: A……, B呢？", examples:["我有两个哥哥，你呢？","我叫白家月，你呢？","我是中国人，你呢？"]},
+    {title:"Lượng từ danh từ và cấu trúc [Số+Lượng từ+(Danh từ)]", vi:"Khi diễn đạt số lượng, số từ tiếng Trung thường đi kèm lượng từ, ví dụ \"口\", \"个\".", examples:["四口","四口人","两个","两个学生"]}
+  ],
+  tips:["几岁 dùng hỏi tuổi trẻ em dưới 10 tuổi; 多大 dùng hỏi tuổi người trên 10 tuổi."],
+  exercises:[
+    {type:"fill", instruction:"Điền từ thích hợp.", bank:["呢","二十","没","口","大"],
+     items:[
+       {q:"王一飞老师有____个学生。", a:"二十"},
+       {q:"杨同乐家有四____人。", a:"口"},
+       {q:"王一雪：我有两个孩子，你____？ 杨同乐：我____孩子。", a:"呢 / 没"},
+       {q:"您女儿今年多____？", a:"大"}
+     ]},
+    {type:"translate", instruction:"Dịch sang tiếng Trung.",
+     items:[
+       {q:"Nhà bạn có mấy người?", a:"你家有几口人？"},
+       {q:"Con trai chị mấy tuổi?", a:"您儿子几岁？"},
+       {q:"Tôi có hai con, một trai một gái.", a:"我有两个孩子，一个儿子，一个女儿。"}
+     ]}
+  ]
+},
+{
+  id:5, cn:"今天我休息", pinyin:"Jīntiān wǒ xiūxi", vi:"Hôm nay tôi nghỉ",
+  objectives:["Nghe, đọc hiểu và diễn đạt ngày tháng theo thói quen tiếng Trung","Dùng năng nguyện động từ \"会\" để diễn đạt khả năng đã học được","Nắm cách dùng câu danh từ vị ngữ"],
+  warmup:[{cn:"2025年5月",pinyin:"èr líng èr wǔ nián wǔ yuè",vi:"tháng 5 năm 2025"},{cn:"休息",pinyin:"xiūxi",vi:"nghỉ ngơi"},{cn:"饺子",pinyin:"jiǎozi",vi:"sủi cảo"},{cn:"电脑",pinyin:"diànnǎo",vi:"máy tính"},{cn:"做饭",pinyin:"zuò fàn",vi:"nấu cơm"},{cn:"星期",pinyin:"xīngqī",vi:"tuần, thứ"}],
+  vocab:[
+    {cn:"今天",pinyin:"jīntiān",pos:"danh từ",vi:"hôm nay"},
+    {cn:"号",pinyin:"hào",pos:"lượng từ",vi:"ngày (mùng)"},
+    {cn:"月",pinyin:"yuè",pos:"danh từ",vi:"tháng"},
+    {cn:"日",pinyin:"rì",pos:"lượng từ",vi:"ngày"},
+    {cn:"星期",pinyin:"xīngqī",pos:"danh từ",vi:"tuần"},
+    {cn:"星期日",pinyin:"Xīngqīrì",pos:"danh từ",vi:"chủ nhật"},
+    {cn:"星期天",pinyin:"Xīngqītiān",pos:"danh từ",vi:"chủ nhật"},
+    {cn:"休息",pinyin:"xiūxi",pos:"động từ",vi:"nghỉ ngơi"},
+    {cn:"会",pinyin:"huì",pos:"năng nguyện động từ",vi:"biết, có thể (do học được)"},
+    {cn:"做饭",pinyin:"zuò fàn",pos:"",vi:"nấu cơm"},
+    {cn:"做",pinyin:"zuò",pos:"động từ",vi:"làm"},
+    {cn:"面条儿",pinyin:"miàntiáor",pos:"danh từ",vi:"mì sợi"},
+    {cn:"饺子",pinyin:"jiǎozi",pos:"danh từ",vi:"sủi cảo"},
+    {cn:"一些",pinyin:"yìxiē",pos:"lượng từ",vi:"một ít, một vài"},
+    {cn:"菜",pinyin:"cài",pos:"danh từ",vi:"món ăn, rau"},
+    {cn:"下班",pinyin:"xiàbān",pos:"động từ",vi:"tan làm"},
+    {cn:"新",pinyin:"xīn",pos:"tính từ",vi:"mới"},
+    {cn:"电脑",pinyin:"diànnǎo",pos:"danh từ",vi:"máy tính"},
+    {cn:"真",pinyin:"zhēn",pos:"phó từ",vi:"thật, thực sự"},
+    {cn:"好看",pinyin:"hǎokàn",pos:"tính từ",vi:"đẹp, đẹp mắt"},
+    {cn:"喜欢",pinyin:"xǐhuan",pos:"động từ",vi:"thích"},
+    {cn:"它",pinyin:"tā",pos:"đại từ",vi:"nó"}
+  ],
+  dialogues:[
+    {label:"Bài khoá 1", situation:"Ở nhà, Lưu Minh và Vương Nhất Tuyết trò chuyện.",
+     lines:[
+       {s:"Vương Nhất Tuyết",cn:"今天几号？",py:"Jīntiān jǐ hào?"},
+       {s:"Lưu Minh",cn:"今天9月8号。",py:"Jīntiān jiǔ yuè bā hào."},
+       {s:"Vương Nhất Tuyết",cn:"星期几？",py:"Xīngqī jǐ?"},
+       {s:"Lưu Minh",cn:"星期日。今天我休息。",py:"Xīngqīrì. Jīntiān wǒ xiūxi."}
+     ], vi:"Vương Nhất Tuyết: Hôm nay mùng mấy?\nLưu Minh: Hôm nay là ngày 8 tháng 9.\nVương Nhất Tuyết: Thứ mấy?\nLưu Minh: Chủ nhật. Hôm nay tôi nghỉ."},
+    {label:"Bài khoá 2", situation:"Nói về việc nấu ăn ở nhà.",
+     lines:[
+       {s:"A",cn:"你会做饭吗？",py:"Nǐ huì zuò fàn ma?"},
+       {s:"B",cn:"我会做面条儿。我不会做菜。",py:"Wǒ huì zuò miàntiáor. Wǒ bú huì zuò cài."}
+     ], vi:"A: Bạn biết nấu cơm không?\nB: Tôi biết làm mì. Tôi không biết nấu món ăn."},
+    {label:"Bài khoá 3", situation:"Tại công ty, Vương Nhất Tuyết và Dương Đồng Lạc trò chuyện sau giờ làm.",
+     lines:[
+       {s:"Vương Nhất Tuyết",cn:"同乐，下班吗？",py:"Tóngle, xiàbān ma?"},
+       {s:"Dương Đồng Lạc",cn:"下班。",py:"Xiàbān."},
+       {s:"Vương Nhất Tuyết",cn:"这是你的新电脑吗？",py:"Zhè shì nǐ de xīn diànnǎo ma?"},
+       {s:"Dương Đồng Lạc",cn:"是的，是我的新电脑。",py:"Shì de, shì wǒ de xīn diànnǎo."},
+       {s:"Vương Nhất Tuyết",cn:"真好看！",py:"Zhēn hǎokàn!"},
+       {s:"Dương Đồng Lạc",cn:"我也很喜欢它。",py:"Wǒ yě hěn xǐhuan tā."}
+     ], vi:"Vương Nhất Tuyết: Đồng Lạc, tan làm à?\nDương Đồng Lạc: Tan làm rồi.\nVương Nhất Tuyết: Đây là máy tính mới của bạn à?\nDương Đồng Lạc: Vâng, máy tính mới của tôi.\nVương Nhất Tuyết: Đẹp thật đấy!\nDương Đồng Lạc: Tôi cũng rất thích nó."}
+  ],
+  grammar:[
+    {title:"Cách diễn đạt thời gian (1)", vi:"Trình tự diễn đạt ngày tháng/thứ trong tiếng Trung: Năm→Tháng→Ngày/Số→Thứ. Tháng: 一月-十二月. Thứ: 星期一-星期日/星期天.", examples:["1992年5月16日/号，星期六","今天9月8号。","明天是2024年8月18号，星期天。"]},
+    {title:"Câu danh từ vị ngữ", vi:"Vị ngữ chỉ gồm danh từ hoặc cụm danh từ, thường dùng diễn đạt thời gian, ngày tháng, tuổi tác.", examples:["今天9月8号。","她今年十二。"]},
+    {title:"Năng nguyện động từ \"会\"", vi:"Đặt trước động từ, biểu thị hiểu biết cách làm hoặc có năng lực làm sau khi học.", examples:["你会做饭吗？","我会做面条儿。","我不会做菜。"]}
+  ],
+  tips:[],
+  exercises:[
+    {type:"fill", instruction:"Điền từ thích hợp.", bank:["会","号","星期","真","下班"],
+     items:[
+       {q:"今天几____？", a:"号"},
+       {q:"____几？— 星期日。", a:"星期"},
+       {q:"你____做饭吗？", a:"会"},
+       {q:"这个杯子____好看！", a:"真"}
+     ]},
+    {type:"translate", instruction:"Dịch sang tiếng Trung.",
+     items:[
+       {q:"Hôm nay là ngày mùng 8 tháng 9.", a:"今天9月8号。"},
+       {q:"Bạn biết nấu cơm không?", a:"你会做饭吗？"},
+       {q:"Tôi cũng rất thích nó.", a:"我也很喜欢它。"}
+     ]}
+  ]
+},
+{
+  id:6, cn:"你的手机号是多少？", pinyin:"Nǐ de shǒujīhào shì duōshao?", vi:"Số điện thoại của bạn là bao nhiêu?",
+  objectives:["Nghe hiểu số điện thoại và dùng số để gọi điện","Dùng hai/nhiều cụm động từ liên tiếp diễn đạt mục đích hoặc phương thức của hành động","Nắm cách dùng năng nguyện động từ \"想\"","Nắm cách dùng đại từ nghi vấn \"怎么\" hỏi phương thức"],
+  warmup:[{cn:"手机",pinyin:"shǒujī",vi:"điện thoại di động"},{cn:"晚饭",pinyin:"wǎnfàn",vi:"bữa tối"},{cn:"超市",pinyin:"chāoshì",vi:"siêu thị"},{cn:"牛奶",pinyin:"niúnǎi",vi:"sữa"},{cn:"出租车",pinyin:"chūzūchē",vi:"taxi"},{cn:"米饭",pinyin:"mǐfàn",vi:"cơm"}],
+  vocab:[
+    {cn:"手机",pinyin:"shǒujī",pos:"danh từ",vi:"điện thoại di động"},
+    {cn:"电话",pinyin:"diànhuà",pos:"danh từ",vi:"điện thoại, cuộc gọi"},
+    {cn:"号",pinyin:"hào",pos:"danh từ",vi:"số"},
+    {cn:"明天",pinyin:"míngtiān",pos:"danh từ",vi:"ngày mai"},
+    {cn:"去",pinyin:"qù",pos:"động từ",vi:"đi"},
+    {cn:"哪儿",pinyin:"nǎr",pos:"đại từ",vi:"đâu"},
+    {cn:"想",pinyin:"xiǎng",pos:"năng nguyện động từ",vi:"muốn"},
+    {cn:"超市",pinyin:"chāoshì",pos:"danh từ",vi:"siêu thị"},
+    {cn:"买",pinyin:"mǎi",pos:"động từ",vi:"mua"},
+    {cn:"东西",pinyin:"dōngxi",pos:"danh từ",vi:"đồ vật, đồ"},
+    {cn:"些",pinyin:"xiē",pos:"lượng từ",vi:"một số, vài"},
+    {cn:"牛奶",pinyin:"niúnǎi",pos:"danh từ",vi:"sữa bò"},
+    {cn:"吃",pinyin:"chī",pos:"động từ",vi:"ăn"},
+    {cn:"晚饭",pinyin:"wǎnfàn",pos:"danh từ",vi:"bữa tối"},
+    {cn:"那边",pinyin:"nàbiān",pos:"đại từ",vi:"đằng kia"},
+    {cn:"包子",pinyin:"bāozi",pos:"danh từ",vi:"bánh bao"},
+    {cn:"非常",pinyin:"fēicháng",pos:"phó từ",vi:"vô cùng, rất"},
+    {cn:"好吃",pinyin:"hǎochī",pos:"tính từ",vi:"ngon"},
+    {cn:"米饭",pinyin:"mǐfàn",pos:"danh từ",vi:"cơm"},
+    {cn:"怎么",pinyin:"zěnme",pos:"đại từ",vi:"làm sao, như thế nào"},
+    {cn:"坐",pinyin:"zuò",pos:"động từ",vi:"ngồi, đi (xe)"},
+    {cn:"出租车",pinyin:"chūzūchē",pos:"danh từ",vi:"taxi"}
+  ],
+  properNouns:[{cn:"西安饭店",pinyin:"Xī'ān Fàndiàn",vi:"Nhà hàng Tây An"}],
+  dialogues:[
+    {label:"Bài khoá 1", situation:"Trên sân trường, Lý Văn xin số điện thoại Bạch Gia Nguyệt.",
+     lines:[
+       {s:"Lý Văn",cn:"家月，你的手机号是多少？",py:"Jiāyuè, nǐ de shǒujīhào shì duōshao?"},
+       {s:"Bạch Gia Nguyệt",cn:"我的手机号是+33 601493190。",py:"Wǒ de shǒujīhào shì +33 601493190."},
+       {s:"Lý Văn",cn:"我的手机号是+86 13552721160。",py:"Wǒ de shǒujīhào shì +86 13552721160."},
+       {s:"Bạch Gia Nguyệt",cn:"好的。",py:"Hǎo de."}
+     ], vi:"Lý Văn: Gia Nguyệt, số điện thoại của bạn là bao nhiêu?\nBạch Gia Nguyệt: Số của tôi là +33 601493190.\nLý Văn: Số của tôi là +86 13552721160.\nBạch Gia Nguyệt: Được rồi."},
+    {label:"Bài khoá 2", situation:"Sau giờ học, Bạch Gia Nguyệt và Trần Thiên Trung trò chuyện.",
+     lines:[
+       {s:"Trần Thiên Trung",cn:"家月，明天你去哪儿？",py:"Jiāyuè, míngtiān nǐ qù nǎr?"},
+       {s:"Bạch Gia Nguyệt",cn:"我想去超市买东西。",py:"Wǒ xiǎng qù chāoshì mǎi dōngxi."},
+       {s:"Trần Thiên Trung",cn:"你去超市买什么？",py:"Nǐ qù chāoshì mǎi shénme?"},
+       {s:"Bạch Gia Nguyệt",cn:"我想买些牛奶。",py:"Wǒ xiǎng mǎi xiē niúnǎi."}
+     ], vi:"Trần Thiên Trung: Gia Nguyệt, mai bạn đi đâu?\nBạch Gia Nguyệt: Tôi muốn đi siêu thị mua đồ.\nTrần Thiên Trung: Bạn đi siêu thị mua gì?\nBạch Gia Nguyệt: Tôi muốn mua ít sữa."},
+    {label:"Bài khoá 3", situation:"Ở nhà, cả nhà Vương Nhất Tuyết bàn việc ăn tối cuối tuần.",
+     lines:[
+       {s:"Vương Nhất Tuyết",cn:"星期天我们去哪儿吃晚饭？",py:"Xīngqītiān wǒmen qù nǎr chī wǎnfàn?"},
+       {s:"Lưu Minh",cn:"我还想去西安饭店。",py:"Wǒ hái xiǎng qù Xī'ān Fàndiàn."},
+       {s:"Lưu Tiểu Tuyết",cn:"那边的包子非常好吃，我想吃包子。",py:"Nàbiān de bāozi fēicháng hǎochī, wǒ xiǎng chī bāozi."},
+       {s:"Lưu Tiểu Minh",cn:"妈妈，我想吃米饭，不想吃包子。",py:"Māma, wǒ xiǎng chī mǐfàn, bù xiǎng chī bāozi."},
+       {s:"Vương Nhất Tuyết",cn:"好的。我们怎么去？",py:"Hǎo de. Wǒmen zěnme qù?"},
+       {s:"Lưu Minh",cn:"坐出租车去。",py:"Zuò chūzūchē qù."}
+     ], vi:"Vương Nhất Tuyết: Chủ nhật cả nhà đi đâu ăn tối?\nLưu Minh: Anh vẫn muốn đi Nhà hàng Tây An.\nLưu Tiểu Tuyết: Bánh bao ở đó ngon lắm, con muốn ăn bánh bao.\nLưu Tiểu Minh: Mẹ ơi, con muốn ăn cơm, không muốn ăn bánh bao.\nVương Nhất Tuyết: Được rồi. Mình đi bằng gì?\nLưu Minh: Đi taxi."}
+  ],
+  grammar:[
+    {title:"Năng nguyện động từ \"想\"", vi:"Đặt trước động từ, biểu thị nguyện vọng, ý định.", examples:["我想去超市。","我哥哥不想休息。"]},
+    {title:"Câu liên động (1)", vi:"Vị ngữ gồm hai hoặc nhiều cụm động từ, biểu thị: (1) mục đích của hành động; (2) phương thức của hành động.", examples:["我想去超市买东西。","我们去西安饭店吃晚饭。","我们坐出租车去西安饭店。","她坐出租车去超市。"]},
+    {title:"Đại từ nghi vấn \"怎么\"", vi:"Đặt trước động từ, hỏi về phương thức thực hiện hành động.", examples:["我们怎么去？","她怎么去超市？"]}
+  ],
+  tips:["Số điện thoại đọc từng chữ số một; số \"1\" đọc thành \"yāo\".","Ngày nay người ta cũng dùng \"电话\" để chỉ điện thoại di động."],
+  exercises:[
+    {type:"fill", instruction:"Điền từ thích hợp.", bank:["多少","买","米饭","坐","去"],
+     items:[
+       {q:"我想____超市____牛奶。", a:"去 / 买"},
+       {q:"我们____出租车去西安饭店吃晚饭。", a:"坐"},
+       {q:"妈妈：你想吃什么？孩子：我想吃____。", a:"米饭"},
+       {q:"老师：你的手机号是____？", a:"多少"}
+     ]},
+    {type:"translate", instruction:"Dịch sang tiếng Trung.",
+     items:[
+       {q:"Số điện thoại của bạn là bao nhiêu?", a:"你的手机号是多少？"},
+       {q:"Chúng ta đi bằng gì?", a:"我们怎么去？"},
+       {q:"Tôi muốn đi siêu thị mua ít sữa.", a:"我想去超市买些牛奶。"}
+     ]}
+  ]
+},
+{
+  id:7, cn:"我晚上六点半下班", pinyin:"Wǒ wǎnshang liù diǎn bàn xiàbān", vi:"Buổi tối tôi tan làm lúc 6 rưỡi",
+  objectives:["Nghe hiểu và mô tả thời điểm xảy ra sự việc","Nắm cách dùng trợ từ ngữ khí \"吧\" (1) diễn đạt đề nghị, bàn bạc","Nắm cách dùng trợ từ ngữ khí \"呢\" (2) diễn đạt xác nhận sự thật","Nắm vị trí của phó từ, từ ngữ thời gian khi làm trạng ngữ"],
+  warmup:[{cn:"8:15",pinyin:"",vi:""},{cn:"15:20",pinyin:"",vi:""},{cn:"10:10",pinyin:"",vi:""},{cn:"13:45",pinyin:"",vi:""},{cn:"12:30",pinyin:"",vi:""},{cn:"18:00",pinyin:"",vi:""}],
+  vocab:[
+    {cn:"现在",pinyin:"xiànzài",pos:"danh từ",vi:"bây giờ"},
+    {cn:"点",pinyin:"diǎn",pos:"lượng từ",vi:"giờ"},
+    {cn:"早上",pinyin:"zǎoshang",pos:"danh từ",vi:"buổi sáng sớm"},
+    {cn:"上午",pinyin:"shàngwǔ",pos:"danh từ",vi:"buổi sáng"},
+    {cn:"分",pinyin:"fēn",pos:"lượng từ",vi:"phút"},
+    {cn:"课",pinyin:"kè",pos:"danh từ",vi:"tiết học, lớp học"},
+    {cn:"下午",pinyin:"xiàwǔ",pos:"danh từ",vi:"buổi chiều"},
+    {cn:"见",pinyin:"jiàn",pos:"động từ",vi:"gặp"},
+    {cn:"吧",pinyin:"ba",pos:"trợ từ",vi:"(trợ từ đề nghị)"},
+    {cn:"电影院",pinyin:"diànyǐngyuàn",pos:"danh từ",vi:"rạp chiếu phim"},
+    {cn:"看",pinyin:"kàn",pos:"động từ",vi:"xem, nhìn"},
+    {cn:"电影",pinyin:"diànyǐng",pos:"danh từ",vi:"phim"},
+    {cn:"事",pinyin:"shì",pos:"danh từ",vi:"việc"},
+    {cn:"上课",pinyin:"shàngkè",pos:"động từ",vi:"lên lớp, học"},
+    {cn:"呢",pinyin:"ne",pos:"trợ từ",vi:"(trợ từ khẳng định)"},
+    {cn:"半",pinyin:"bàn",pos:"số từ",vi:"rưỡi, nửa"},
+    {cn:"下课",pinyin:"xiàkè",pos:"động từ",vi:"tan học"},
+    {cn:"在",pinyin:"zài",pos:"động từ",vi:"ở, tại"},
+    {cn:"家",pinyin:"jiā",pos:"danh từ",vi:"nhà"},
+    {cn:"里",pinyin:"lǐ",pos:"danh từ",vi:"trong, bên trong"},
+    {cn:"晚上",pinyin:"wǎnshang",pos:"danh từ",vi:"buổi tối"},
+    {cn:"医院",pinyin:"yīyuàn",pos:"danh từ",vi:"bệnh viện"},
+    {cn:"上班",pinyin:"shàngbān",pos:"động từ",vi:"đi làm"},
+    {cn:"店",pinyin:"diàn",pos:"danh từ",vi:"cửa hàng"},
+    {cn:"菜",pinyin:"cài",pos:"danh từ",vi:"rau, món ăn"},
+    {cn:"分钟",pinyin:"fēnzhōng",pos:"lượng từ",vi:"phút"},
+    {cn:"后",pinyin:"hòu",pos:"danh từ",vi:"sau"}
+  ],
+  dialogues:[
+    {label:"Bài khoá 1", situation:"Bạch Gia Nguyệt và Annie gọi điện thoại cho nhau.",
+     lines:[
+       {s:"Bạch Gia Nguyệt",cn:"现在几点？",py:"Xiànzài jǐ diǎn?"},
+       {s:"Annie",cn:"早上八点四十。",py:"Zǎoshang bā diǎn sìshí."},
+       {s:"Bạch Gia Nguyệt",cn:"我上午十点十分有课。",py:"Wǒ shàngwǔ shí diǎn shí fēn yǒu kè."},
+       {s:"Annie",cn:"好的，我们下午两点见吧。",py:"Hǎo de, wǒmen xiàwǔ liǎng diǎn jiàn ba."}
+     ], vi:"Bạch Gia Nguyệt: Bây giờ mấy giờ rồi?\nAnnie: 8 giờ 40 sáng.\nBạch Gia Nguyệt: 10 giờ 10 sáng tôi có tiết học.\nAnnie: Được, vậy 2 giờ chiều mình gặp nhau nhé."},
+    {label:"Bài khoá 2", situation:"Trên sân trường, Lý Văn gặp Bạch Gia Nguyệt.",
+     lines:[
+       {s:"Lý Văn",cn:"下午我想去电影院看电影，你去吗？",py:"Xiàwǔ wǒ xiǎng qù diànyǐngyuàn kàn diànyǐng, nǐ qù ma?"},
+       {s:"Bạch Gia Nguyệt",cn:"我不想去，下午还有事。",py:"Wǒ bù xiǎng qù, xiàwǔ hái yǒu shì."},
+       {s:"Lý Văn",cn:"好的，明天呢？",py:"Hǎo de, míngtiān ne?"},
+       {s:"Bạch Gia Nguyệt",cn:"我明天下午两点还上课呢，四点半下课。",py:"Wǒ míngtiān xiàwǔ liǎng diǎn hái shàngkè ne, sì diǎn bàn xiàkè."}
+     ], vi:"Lý Văn: Chiều nay tôi muốn đi rạp xem phim, bạn đi không?\nBạch Gia Nguyệt: Tôi không đi được, chiều nay còn việc.\nLý Văn: Được, thế mai thì sao?\nBạch Gia Nguyệt: Chiều mai 2 giờ tôi vẫn còn học, 4 rưỡi mới tan."},
+    {label:"Bài khoá 3", situation:"Vương Nhất Tuyết gọi điện cho Lưu Minh tại văn phòng.",
+     lines:[
+       {s:"Vương Nhất Tuyết",cn:"喂，你在哪儿呢？",py:"Wèi, nǐ zài nǎr ne?"},
+       {s:"Lưu Minh",cn:"我在家里呢。",py:"Wǒ zài jiā li ne."},
+       {s:"Vương Nhất Tuyết",cn:"我晚上六点半下班。",py:"Wǒ wǎnshang liù diǎn bàn xiàbān."},
+       {s:"Lưu Minh",cn:"我八点去医院上班。",py:"Wǒ bā diǎn qù yīyuàn shàngbān."},
+       {s:"Vương Nhất Tuyết",cn:"好的，你去店里买些菜吧。",py:"Hǎo de, nǐ qù diàn li mǎi xiē cài ba."},
+       {s:"Lưu Minh",cn:"好，我十分钟后去。",py:"Hǎo, wǒ shí fēnzhōng hòu qù."}
+     ], vi:"Vương Nhất Tuyết: A lô, anh đang ở đâu vậy?\nLưu Minh: Anh đang ở nhà.\nVương Nhất Tuyết: Tối nay em tan làm lúc 6 rưỡi.\nLưu Minh: Anh 8 giờ đi làm ở bệnh viện.\nVương Nhất Tuyết: Được, anh ghé cửa hàng mua ít rau nhé.\nLưu Minh: Được, 10 phút nữa anh đi."}
+  ],
+  grammar:[
+    {title:"Cách diễn đạt thời gian (2)", vi:"Dùng \"点、分\" diễn đạt thời điểm cụ thể: giờ tròn dùng \"点\", có phút thì thêm \"分\" (có thể lược bỏ, trừ khi là \"十分\"; dưới 10 phút phải đọc \"零\"). Dùng \"上午、中午、下午、晚上\" diễn đạt khoảng thời gian, có thể thêm giờ cụ thể phía sau.", examples:["九点 (9:00)","十五点四十 (15:40)","二十一点十分 (21:10)","上午","晚上九点十分"]},
+    {title:"Trợ từ ngữ khí \"吧\" (1)", vi:"Đọc nhẹ (ba), đặt cuối câu, biểu thị đề nghị, bàn bạc, khuyên nhủ, yêu cầu.", examples:["我们下午三点见吧。","我们去西安饭店吃晚饭吧。"]},
+    {title:"Vị trí phó từ, từ ngữ thời gian làm trạng ngữ", vi:"Trong tiếng Trung, phó từ và từ ngữ thời gian làm trạng ngữ thường đứng trước động từ hoặc tính từ.", examples:["我不想去。","妹妹很高兴。","她上午十点半上课。"]},
+    {title:"Trợ từ ngữ khí \"呢\" (2)", vi:"Đặt cuối câu, biểu thị xác nhận sự thật. Cấu trúc: ……呢。", examples:["我明天下午两点还上课呢。","妹妹会做两个菜呢。"]}
+  ],
+  tips:["\"里\" làm phương vị từ sau danh từ như \"家、超市\" thường đọc nhẹ (li); trong \"里边\" đọc thanh 3 (lǐ)."],
+  exercises:[
+    {type:"fill", instruction:"Điền từ thích hợp.", bank:["点","吧","呢","下班","半"],
+     items:[
+       {q:"现在几____？", a:"点"},
+       {q:"我们下午两点见____。", a:"吧"},
+       {q:"我在家里____。", a:"呢"},
+       {q:"我晚上六____下班。", a:"半"}
+     ]},
+    {type:"translate", instruction:"Dịch sang tiếng Trung.",
+     items:[
+       {q:"Bây giờ mấy giờ rồi?", a:"现在几点？"},
+       {q:"Chúng ta 2 giờ chiều gặp nhau nhé.", a:"我们下午两点见吧。"},
+       {q:"Tôi tối nay 6 rưỡi tan làm.", a:"我晚上六点半下班。"}
+     ]}
+  ]
+},
+{
+  id:8, cn:"我爸爸也在医院工作", pinyin:"Wǒ bàba yě zài yīyuàn gōngzuò", vi:"Bố tôi cũng làm việc ở bệnh viện",
+  objectives:["Nghe hiểu và mô tả nơi chốn, vị trí","Nắm cách dùng giới từ \"在\" chỉ phương vị","Nắm cách dùng năng nguyện động từ \"能\""],
+  warmup:[{cn:"小猫",pinyin:"xiǎomāo",vi:"mèo con"},{cn:"学校",pinyin:"xuéxiào",vi:"trường học"},{cn:"书店",pinyin:"shūdiàn",vi:"hiệu sách"},{cn:"医生",pinyin:"yīshēng",vi:"bác sĩ"},{cn:"桌子",pinyin:"zhuōzi",vi:"cái bàn"},{cn:"房间",pinyin:"fángjiān",vi:"phòng"}],
+  vocab:[
+    {cn:"房间",pinyin:"fángjiān",pos:"danh từ",vi:"phòng"},
+    {cn:"外",pinyin:"wài",pos:"danh từ",vi:"bên ngoài"},
+    {cn:"只",pinyin:"zhī",pos:"lượng từ",vi:"con (lượng từ động vật)"},
+    {cn:"小",pinyin:"xiǎo",pos:"tính từ",vi:"nhỏ"},
+    {cn:"猫",pinyin:"māo",pos:"danh từ",vi:"mèo"},
+    {cn:"没",pinyin:"méi",pos:"phó từ",vi:"không, chưa"},
+    {cn:"看见",pinyin:"kànjiàn",pos:"động từ",vi:"nhìn thấy"},
+    {cn:"桌子",pinyin:"zhuōzi",pos:"danh từ",vi:"cái bàn"},
+    {cn:"下",pinyin:"xià",pos:"danh từ",vi:"dưới"},
+    {cn:"漂亮",pinyin:"piàoliang",pos:"tính từ",vi:"xinh đẹp"},
+    {cn:"在",pinyin:"zài",pos:"giới từ",vi:"ở, tại"},
+    {cn:"学校",pinyin:"xuéxiào",pos:"danh từ",vi:"trường học"},
+    {cn:"书店",pinyin:"shūdiàn",pos:"danh từ",vi:"hiệu sách"},
+    {cn:"前",pinyin:"qián",pos:"danh từ",vi:"trước, phía trước"},
+    {cn:"能",pinyin:"néng",pos:"năng nguyện động từ",vi:"có thể"},
+    {cn:"到",pinyin:"dào",pos:"động từ",vi:"đến, tới"},
+    {cn:"午饭",pinyin:"wǔfàn",pos:"danh từ",vi:"bữa trưa"},
+    {cn:"饭",pinyin:"fàn",pos:"danh từ",vi:"cơm, bữa ăn"},
+    {cn:"大",pinyin:"dà",pos:"tính từ",vi:"to, lớn"},
+    {cn:"病人",pinyin:"bìngrén",pos:"danh từ",vi:"bệnh nhân"},
+    {cn:"多",pinyin:"duō",pos:"tính từ",vi:"nhiều"},
+    {cn:"医生",pinyin:"yīshēng",pos:"danh từ",vi:"bác sĩ"},
+    {cn:"工作",pinyin:"gōngzuò",pos:"động từ",vi:"làm việc"}
+  ],
+  properNouns:[{cn:"胡医生",pinyin:"Hú yīshēng",vi:"bác sĩ Hồ"}],
+  dialogues:[
+    {label:"Bài khoá 1", situation:"Tại nhà Vương Nhất Phi, Bạch Gia Nguyệt và Trần Thiên Trung đến chơi.",
+     lines:[
+       {s:"Bạch Gia Nguyệt",cn:"房间外有一只小猫。",py:"Fángjiān wài yǒu yì zhī xiǎomāo."},
+       {s:"Trần Thiên Trung",cn:"我没看见，它在哪儿呢？",py:"Wǒ méi kànjiàn, tā zài nǎr ne?"},
+       {s:"Bạch Gia Nguyệt",cn:"它在桌子下呢。",py:"Tā zài zhuōzi xià ne."},
+       {s:"Trần Thiên Trung",cn:"这只小猫真漂亮！",py:"Zhè zhī xiǎomāo zhēn piàoliang!"}
+     ], vi:"Bạch Gia Nguyệt: Ngoài phòng có một con mèo con.\nTrần Thiên Trung: Mình không thấy, nó ở đâu vậy?\nBạch Gia Nguyệt: Nó ở dưới bàn kìa.\nTrần Thiên Trung: Con mèo này xinh thật!"},
+    {label:"Bài khoá 2", situation:"Sau giờ học, Bạch Gia Nguyệt gọi điện cho Lý Văn.",
+     lines:[
+       {s:"Bạch Gia Nguyệt",cn:"我们在哪儿见呢？",py:"Wǒmen zài nǎr jiàn ne?"},
+       {s:"Lý Văn",cn:"在学校书店前见吧。",py:"Zài xuéxiào shūdiàn qián jiàn ba."},
+       {s:"Bạch Gia Nguyệt",cn:"好的。下午两点你能到吗？",py:"Hǎo de. Xiàwǔ liǎng diǎn nǐ néng dào ma?"},
+       {s:"Lý Văn",cn:"我能到。我在学校吃午饭。",py:"Wǒ néng dào. Wǒ zài xuéxiào chī wǔfàn."}
+     ], vi:"Bạch Gia Nguyệt: Mình gặp nhau ở đâu nhỉ?\nLý Văn: Gặp trước hiệu sách trường nhé.\nBạch Gia Nguyệt: Được. 2 giờ chiều bạn đến được không?\nLý Văn: Mình đến được. Mình ăn trưa ở trường."},
+    {label:"Bài khoá 3", situation:"Tại bệnh viện, Lưu Minh trò chuyện với đồng nghiệp bác sĩ Hồ.",
+     lines:[
+       {s:"Lưu Minh",cn:"小胡，还没吃饭呢？",py:"Xiǎo Hú, hái méi chī fàn ne?"},
+       {s:"Bác sĩ Hồ",cn:"没吃呢。",py:"Méi chī ne."},
+       {s:"Lưu Minh",cn:"大医院病人多，医生非常忙。",py:"Dà yīyuàn bìngrén duō, yīshēng fēicháng máng."},
+       {s:"Bác sĩ Hồ",cn:"是的。我爸爸也在医院工作，他也非常忙。",py:"Shì de. Wǒ bàba yě zài yīyuàn gōngzuò, tā yě fēicháng máng."},
+       {s:"Lưu Minh",cn:"你家有两个医生？",py:"Nǐ jiā yǒu liǎng gè yīshēng?"},
+       {s:"Bác sĩ Hồ",cn:"对。",py:"Duì."}
+     ], vi:"Lưu Minh: Tiểu Hồ, vẫn chưa ăn cơm à?\nBác sĩ Hồ: Chưa ăn.\nLưu Minh: Bệnh viện lớn nhiều bệnh nhân, bác sĩ bận lắm.\nBác sĩ Hồ: Đúng vậy. Bố tôi cũng làm ở bệnh viện, ông cũng rất bận.\nLưu Minh: Nhà bạn có hai bác sĩ à?\nBác sĩ Hồ: Đúng vậy."}
+  ],
+  grammar:[
+    {title:"Phương vị từ", vi:"Các phương vị từ học trong tập này: 上,下,里,外,前,后,外边.", examples:["房间里有一只小猫。","我们去书店外吧。","小雪的手机在桌子上呢。"]},
+    {title:"Giới từ \"在\"", vi:"Giới từ \"在\" kết hợp với từ ngữ chỉ vị trí, nơi chốn, đặt trước động từ, biểu thị hành động diễn ra ở đâu.", examples:["我在学校吃午饭。","他爸爸在医院工作。","你在哪儿买菜？"]},
+    {title:"Năng nguyện động từ \"能\"", vi:"Đặt trước động từ, biểu thị có năng lực, điều kiện hoặc khả năng làm việc gì đó.", examples:["下午两点你能到吗？","爸爸能去。","我不能去学校吃午饭。"]}
+  ],
+  tips:["\"小+họ\" là cách gọi thân mật với người nhỏ tuổi hơn mình."],
+  exercises:[
+    {type:"fill", instruction:"Điền từ thích hợp.", bank:["在","下","能","书店","桌子"],
+     items:[
+       {q:"胡医生的爸爸____医院工作。", a:"在"},
+       {q:"它____桌子____呢。", a:"在 / 下"},
+       {q:"下午两点你____到吗？", a:"能"},
+       {q:"我们在学校____前见吧。", a:"书店"}
+     ]},
+    {type:"translate", instruction:"Dịch sang tiếng Trung.",
+     items:[
+       {q:"Bố tôi cũng làm ở bệnh viện.", a:"我爸爸也在医院工作。"},
+       {q:"2 giờ chiều bạn đến được không?", a:"下午两点你能到吗？"},
+       {q:"Con mèo này ở dưới bàn.", a:"这只小猫在桌子下。"}
+     ]}
+  ]
+},
+{
+  id:9, cn:"我明天上午在学校学习", pinyin:"Wǒ míngtiān shàngwǔ zài xuéxiào xuéxí", vi:"Sáng mai tôi học ở trường",
+  objectives:["Nghe hiểu và dùng \"有/是\" diễn đạt sự tồn tại","Nắm trình tự từ ngữ thời gian và nơi chốn khi cùng làm trạng ngữ","Nắm cách dùng \"第\"","Hiểu hoạt động giải trí của người Trung Quốc hiện đại"],
+  warmup:[{cn:"小狗",pinyin:"xiǎogǒu",vi:"cún con"},{cn:"电视",pinyin:"diànshì",vi:"tivi"},{cn:"学习",pinyin:"xuéxí",vi:"học tập"},{cn:"玩",pinyin:"wán",vi:"chơi"},{cn:"椅子",pinyin:"yǐzi",vi:"cái ghế"},{cn:"书",pinyin:"shū",vi:"sách"}],
+  vocab:[
+    {cn:"前边",pinyin:"qiánbian",pos:"danh từ",vi:"phía trước"},
+    {cn:"边",pinyin:"biān",pos:"hậu tố/danh từ",vi:"bên, phía"},
+    {cn:"家",pinyin:"jiā",pos:"lượng từ",vi:"(lượng từ cửa hàng, doanh nghiệp)"},
+    {cn:"那个",pinyin:"nàge",pos:"đại từ",vi:"cái đó"},
+    {cn:"外边",pinyin:"wàibian",pos:"danh từ",vi:"bên ngoài"},
+    {cn:"椅子",pinyin:"yǐzi",pos:"danh từ",vi:"ghế"},
+    {cn:"上",pinyin:"shàng",pos:"danh từ",vi:"trên"},
+    {cn:"本",pinyin:"běn",pos:"lượng từ",vi:"quyển (sách)"},
+    {cn:"书",pinyin:"shū",pos:"danh từ",vi:"sách"},
+    {cn:"那",pinyin:"nà",pos:"đại từ",vi:"đó, kia"},
+    {cn:"第",pinyin:"dì",pos:"tiếp đầu ngữ",vi:"thứ (số thứ tự)"},
+    {cn:"学习",pinyin:"xuéxí",pos:"động từ",vi:"học tập"},
+    {cn:"做",pinyin:"zuò",pos:"động từ",vi:"làm"},
+    {cn:"白天",pinyin:"báitiān",pos:"danh từ",vi:"ban ngày"},
+    {cn:"读书",pinyin:"dúshū",pos:"động từ",vi:"đọc sách"},
+    {cn:"和",pinyin:"hé",pos:"giới từ",vi:"cùng, với"},
+    {cn:"朋友",pinyin:"péngyou",pos:"danh từ",vi:"bạn bè"},
+    {cn:"唱",pinyin:"chàng",pos:"động từ",vi:"hát"},
+    {cn:"歌",pinyin:"gē",pos:"danh từ",vi:"bài hát"},
+    {cn:"好听",pinyin:"hǎotīng",pos:"tính từ",vi:"hay, dễ nghe"},
+    {cn:"电视",pinyin:"diànshì",pos:"danh từ",vi:"tivi"},
+    {cn:"狗",pinyin:"gǒu",pos:"danh từ",vi:"chó"},
+    {cn:"玩",pinyin:"wán",pos:"động từ",vi:"chơi"}
+  ],
+  dialogues:[
+    {label:"Bài khoá 1", situation:"Trên sân trường, Lý Văn và Bạch Gia Nguyệt trò chuyện.",
+     lines:[
+       {s:"Lý Văn",cn:"学校前边有一家电影院。",py:"Xuéxiào qiánbian yǒu yì jiā diànyǐngyuàn."},
+       {s:"Bạch Gia Nguyệt",cn:"对。我们晚上去那个电影院看电影吧。",py:"Duì. Wǒmen wǎnshang qù nàge diànyǐngyuàn kàn diànyǐng ba."},
+       {s:"Lý Văn",cn:"好！我们七点在电影院外边见，好吗？",py:"Hǎo! Wǒmen qī diǎn zài diànyǐngyuàn wàibian jiàn, hǎo ma?"},
+       {s:"Bạch Gia Nguyệt",cn:"好的，晚上七点见！",py:"Hǎo de, wǎnshang qī diǎn jiàn!"}
+     ], vi:"Lý Văn: Phía trước trường có một rạp chiếu phim.\nBạch Gia Nguyệt: Đúng vậy. Tối nay mình đi rạp đó xem phim nhé.\nLý Văn: Được! 7 giờ mình gặp nhau ở ngoài rạp nhé?\nBạch Gia Nguyệt: Được, 7 giờ tối gặp nhé!"},
+    {label:"Bài khoá 2", situation:"Sau giờ học, Bạch Gia Nguyệt và Trần Thiên Trung trò chuyện.",
+     lines:[
+       {s:"Bạch Gia Nguyệt",cn:"椅子上有一本中文书，那是谁的书？",py:"Yǐzi shang yǒu yì běn Zhōngwén shū, nà shì shéi de shū?"},
+       {s:"Trần Thiên Trung",cn:"是我的书，谢谢。这是我的第二本中文书。",py:"Shì wǒ de shū, xièxie. Zhè shì wǒ de dì-èr běn Zhōngwén shū."},
+       {s:"Bạch Gia Nguyệt",cn:"不客气。你明天上午在哪儿？",py:"Bú kèqi. Nǐ míngtiān shàngwǔ zài nǎr?"},
+       {s:"Trần Thiên Trung",cn:"我明天上午在学校学习。",py:"Wǒ míngtiān shàngwǔ zài xuéxiào xuéxí."}
+     ], vi:"Bạch Gia Nguyệt: Trên ghế có một quyển sách tiếng Trung, đó là sách của ai vậy?\nTrần Thiên Trung: Là sách của mình, cảm ơn nhé. Đây là quyển sách tiếng Trung thứ hai của mình.\nBạch Gia Nguyệt: Không có gì. Sáng mai bạn ở đâu?\nTrần Thiên Trung: Sáng mai mình học ở trường."},
+    {label:"Bài khoá 3", situation:"Tại văn phòng, giờ giải lao, Vương Nhất Tuyết và Dương Đồng Lạc nói về cuối tuần.",
+     lines:[
+       {s:"Vương Nhất Tuyết",cn:"明天星期六，你做什么？",py:"Míngtiān xīngqīliù, nǐ zuò shénme?"},
+       {s:"Dương Đồng Lạc",cn:"我白天在家里读书，晚上和朋友们去外边唱歌。",py:"Wǒ báitiān zài jiā li dúshū, wǎnshang hé péngyoumen qù wàibian chànggē."},
+       {s:"Vương Nhất Tuyết",cn:"你唱歌很好听。",py:"Nǐ chànggē hěn hǎotīng."},
+       {s:"Dương Đồng Lạc",cn:"谢谢！您星期六做什么？",py:"Xièxie! Nín xīngqīliù zuò shénme?"},
+       {s:"Vương Nhất Tuyết",cn:"我在家里做饭、看电视，和孩子们、小狗玩。",py:"Wǒ zài jiā li zuò fàn, kàn diànshì, hé háizimen, xiǎogǒu wán."},
+       {s:"Dương Đồng Lạc",cn:"我也有一只小狗。",py:"Wǒ yě yǒu yì zhī xiǎogǒu."}
+     ], vi:"Vương Nhất Tuyết: Mai thứ 7, bạn làm gì?\nDương Đồng Lạc: Ban ngày mình ở nhà đọc sách, tối đi hát cùng bạn bè.\nVương Nhất Tuyết: Bạn hát hay lắm.\nDương Đồng Lạc: Cảm ơn chị! Thứ 7 chị làm gì?\nVương Nhất Tuyết: Chị ở nhà nấu cơm, xem tivi, chơi với các con và cún cưng.\nDương Đồng Lạc: Em cũng có một chú cún."}
+  ],
+  grammar:[
+    {title:"Câu tồn hiện (1)", vi:"Câu tồn hiện biểu thị sự tồn tại của người/vật ở một nơi chốn nào đó, thường đánh dấu bằng \"有\" hoặc \"是\". Khi phủ định, không dùng số từ-lượng từ trước tân ngữ.", examples:["学校前边有一家电影院。","电影院前边是一家超市。","电影院前边不是超市。","桌子上没有小猫。"]},
+    {title:"Trình tự từ ngữ thời gian và nơi chốn cùng làm trạng ngữ", vi:"Khi từ ngữ thời gian và nơi chốn cùng làm trạng ngữ, từ ngữ thời gian phải đứng trước từ ngữ nơi chốn.", examples:["我们七点在电影院外边见。","安妮下午在家里学中文。","陈天中明天中午在学校吃午饭。"]},
+    {title:"\"第\" chỉ số thứ tự", vi:"\"第\" đặt trước số từ để biểu thị số thứ tự. Cấu trúc: (1) 第+số từ; (2) 第+số từ+lượng từ+(danh từ).", examples:["第一，第二，第三","第一个，第二个，第一本","第一个学生，第一本书"]}
+  ],
+  tips:[],
+  exercises:[
+    {type:"fill", instruction:"Điền từ thích hợp.", bank:["第","上","有","前边","和"],
+     items:[
+       {q:"椅子____有一本中文书。", a:"上"},
+       {q:"这是我的____二本中文书。", a:"第"},
+       {q:"学校____有一家电影院。", a:"前边"},
+       {q:"晚上我____朋友们去唱歌。", a:"和"}
+     ]},
+    {type:"translate", instruction:"Dịch sang tiếng Trung.",
+     items:[
+       {q:"Phía trước trường có một rạp chiếu phim.", a:"学校前边有一家电影院。"},
+       {q:"Sáng mai tôi học ở trường.", a:"我明天上午在学校学习。"},
+       {q:"Bạn hát hay lắm.", a:"你唱歌很好听。"}
+     ]}
+  ]
+},
+{
+  id:10, cn:"这儿的苹果真便宜！", pinyin:"Zhèr de píngguǒ zhēn piányi!", vi:"Táo ở đây rẻ thật đấy!",
+  objectives:["Nghe, đọc hiểu và trao đổi đơn giản về giá cả hàng hoá","Nắm cách dùng câu tính từ vị ngữ","Nắm cách dùng đại từ nghi vấn \"怎么样\"","Nhận biết tiền nhân dân tệ (RMB)"],
+  warmup:[{cn:"衣服",pinyin:"yīfu",vi:"quần áo"},{cn:"便宜",pinyin:"piányi",vi:"rẻ"},{cn:"苹果",pinyin:"píngguǒ",vi:"táo"},{cn:"穿",pinyin:"chuān",vi:"mặc"},{cn:"杯子",pinyin:"bēizi",vi:"cái cốc"},{cn:"商店",pinyin:"shāngdiàn",vi:"cửa hàng"}],
+  vocab:[
+    {cn:"杯子",pinyin:"bēizi",pos:"danh từ",vi:"cái cốc"},
+    {cn:"售货员",pinyin:"shòuhuòyuán",pos:"danh từ",vi:"nhân viên bán hàng"},
+    {cn:"这边",pinyin:"zhèbiān",pos:"đại từ",vi:"bên này"},
+    {cn:"钱",pinyin:"qián",pos:"danh từ",vi:"tiền"},
+    {cn:"这些",pinyin:"zhèxiē",pos:"đại từ",vi:"những cái này"},
+    {cn:"块",pinyin:"kuài",pos:"lượng từ",vi:"đồng (tiền)"},
+    {cn:"那些",pinyin:"nàxiē",pos:"đại từ",vi:"những cái đó"},
+    {cn:"这儿",pinyin:"zhèr",pos:"đại từ",vi:"ở đây"},
+    {cn:"水果",pinyin:"shuǐguǒ",pos:"danh từ",vi:"hoa quả"},
+    {cn:"少",pinyin:"shǎo",pos:"tính từ",vi:"ít"},
+    {cn:"斤",pinyin:"jīn",pos:"lượng từ",vi:"cân (500g)"},
+    {cn:"苹果",pinyin:"píngguǒ",pos:"danh từ",vi:"táo"},
+    {cn:"便宜",pinyin:"piányi",pos:"tính từ",vi:"rẻ"},
+    {cn:"商店",pinyin:"shāngdiàn",pos:"danh từ",vi:"cửa hàng"},
+    {cn:"衣服",pinyin:"yīfu",pos:"danh từ",vi:"quần áo"},
+    {cn:"件",pinyin:"jiàn",pos:"lượng từ",vi:"cái, chiếc (áo)"},
+    {cn:"元",pinyin:"yuán",pos:"lượng từ",vi:"đồng (nhân dân tệ)"},
+    {cn:"怎么样",pinyin:"zěnmeyàng",pos:"đại từ",vi:"thế nào"},
+    {cn:"贵",pinyin:"guì",pos:"tính từ",vi:"đắt"},
+    {cn:"穿",pinyin:"chuān",pos:"động từ",vi:"mặc"},
+    {cn:"女",pinyin:"nǚ",pos:"tính từ",vi:"nữ"},
+    {cn:"男",pinyin:"nán",pos:"tính từ",vi:"nam"},
+    {cn:"那儿",pinyin:"nàr",pos:"đại từ",vi:"ở đó"}
+  ],
+  dialogues:[
+    {label:"Bài khoá 1", situation:"Tại cửa hàng nhỏ, Vương Nhất Tuyết mua cốc.",
+     lines:[
+       {s:"Vương Nhất Tuyết",cn:"请问，有杯子吗？",py:"Qǐngwèn, yǒu bēizi ma?"},
+       {s:"Nhân viên",cn:"有，杯子在这边。",py:"Yǒu, bēizi zài zhèbiān."},
+       {s:"Vương Nhất Tuyết",cn:"多少钱一个？",py:"Duōshao qián yí gè?"},
+       {s:"Nhân viên",cn:"这些五块钱一个，那些十块钱一个。",py:"Zhèxiē wǔ kuài qián yí gè, nàxiē shí kuài qián yí gè."},
+       {s:"Vương Nhất Tuyết",cn:"我买这个吧。",py:"Wǒ mǎi zhège ba."}
+     ], vi:"Vương Nhất Tuyết: Xin hỏi, có cốc không?\nNhân viên: Có, cốc ở bên này.\nVương Nhất Tuyết: Bao nhiêu tiền một cái?\nNhân viên: Loại này 5 tệ một cái, loại kia 10 tệ một cái.\nVương Nhất Tuyết: Tôi mua cái này vậy."},
+    {label:"Bài khoá 2", situation:"Ở chợ, Vương Nhất Tuyết mua hoa quả.",
+     lines:[
+       {s:"Vương Nhất Tuyết",cn:"这儿的水果真不少！",py:"Zhèr de shuǐguǒ zhēn bù shǎo!"},
+       {s:"Người bán",cn:"您想买什么？",py:"Nín xiǎng mǎi shénme?"},
+       {s:"Vương Nhất Tuyết",cn:"我想买两斤苹果。",py:"Wǒ xiǎng mǎi liǎng jīn píngguǒ."},
+       {s:"Người bán",cn:"苹果三块五一斤。这些七块二，七块钱吧。",py:"Píngguǒ sān kuài wǔ yì jīn. Zhèxiē qī kuài èr, qī kuài qián ba."},
+       {s:"Vương Nhất Tuyết",cn:"好的，这儿的苹果真便宜！",py:"Hǎo de, zhèr de píngguǒ zhēn piányi!"}
+     ], vi:"Vương Nhất Tuyết: Hoa quả ở đây nhiều thật!\nNgười bán: Chị muốn mua gì?\nVương Nhất Tuyết: Tôi muốn mua hai cân táo.\nNgười bán: Táo 3,5 tệ một cân. Chỗ này 7,2 tệ, thôi lấy 7 tệ vậy.\nVương Nhất Tuyết: Được, táo ở đây rẻ thật đấy!"},
+    {label:"Bài khoá 3", situation:"Tại trung tâm thương mại, Lưu Minh và Vương Nhất Tuyết mua quần áo cho con.",
+     lines:[
+       {s:"Vương Nhất Tuyết",cn:"这家商店衣服真多！这件一百元，怎么样？",py:"Zhè jiā shāngdiàn yīfu zhēn duō! Zhè jiàn yìbǎi yuán, zěnmeyàng?"},
+       {s:"Lưu Minh",cn:"好看，也不贵。",py:"Hǎokàn, yě bú guì."},
+       {s:"Vương Nhất Tuyết",cn:"小雪能穿，买一件吧。",py:"Xiǎoxuě néng chuān, mǎi yí jiàn ba."},
+       {s:"Lưu Minh",cn:"好的。小明能穿吗？",py:"Hǎo de. Xiǎomíng néng chuān ma?"},
+       {s:"Vương Nhất Tuyết",cn:"不能。这些是女孩子穿的衣服，男孩子的衣服在那儿。",py:"Bù néng. Zhèxiē shì nǚ háizi chuān de yīfu, nán háizi de yīfu zài nàr."},
+       {s:"Lưu Minh",cn:"好的。",py:"Hǎo de."}
+     ], vi:"Vương Nhất Tuyết: Cửa hàng này nhiều quần áo thật! Cái này 100 tệ, anh thấy sao?\nLưu Minh: Đẹp đấy, cũng không đắt.\nVương Nhất Tuyết: Tiểu Tuyết mặc vừa, mua một cái đi.\nLưu Minh: Được. Tiểu Minh mặc được không?\nVương Nhất Tuyết: Không được. Đây là đồ con gái mặc, đồ con trai ở đằng kia.\nLưu Minh: Được rồi."}
+  ],
+  grammar:[
+    {title:"Cách diễn đạt số tiền", vi:"Đơn vị tiền tệ Trung Quốc là Nhân dân tệ (人民币), từ lớn đến nhỏ: 元、角、分 (khẩu ngữ: 块、毛、分). Thứ tự: 元/块→角/毛→分.", examples:["0.02元 = 两分","0.2元 = 两毛","3元 = 三块","3.2元 = 三块二","6.02元 = 六块零两分"]},
+    {title:"Câu tính từ vị ngữ", vi:"Tính từ có thể trực tiếp làm vị ngữ, phía trước có thể thêm phó từ mức độ hoặc phó từ phủ định.", examples:["这儿的水果真不少！","我的房间不大。","那个苹果好吃。"]},
+    {title:"Đại từ nghi vấn \"怎么样\"", vi:"Dùng hỏi tính chất, tình trạng, phương thức... của sự vật.", examples:["这件一百元，怎么样？"]}
+  ],
+  tips:[],
+  exercises:[
+    {type:"fill", instruction:"Điền từ thích hợp.", bank:["便宜","怎么样","块","贵","斤"],
+     items:[
+       {q:"这儿的苹果真____！", a:"便宜"},
+       {q:"苹果三____五一____。", a:"块 / 斤"},
+       {q:"这件衣服____？", a:"怎么样"},
+       {q:"这件衣服不____，也好看。", a:"贵"}
+     ]},
+    {type:"translate", instruction:"Dịch sang tiếng Trung.",
+     items:[
+       {q:"Bao nhiêu tiền một cái?", a:"多少钱一个？"},
+       {q:"Táo ở đây rẻ thật đấy!", a:"这儿的苹果真便宜！"},
+       {q:"Cái áo này thế nào?", a:"这件衣服怎么样？"}
+     ]}
+  ]
+},
+{
+  id:11, cn:"我读大学呢", pinyin:"Wǒ dú dàxué ne", vi:"Tôi đang học đại học",
+  objectives:["Nghe hiểu và dùng 3 cấu trúc diễn đạt việc đang diễn ra","Nghe hiểu và dùng câu hỏi chính phản để hỏi","Nắm cách dùng năng nguyện động từ \"要\" diễn đạt muốn làm, định làm"],
+  warmup:[{cn:"开车",pinyin:"kāichē",vi:"lái xe"},{cn:"睡觉",pinyin:"shuìjiào",vi:"ngủ"},{cn:"问",pinyin:"wèn",vi:"hỏi"},{cn:"饭店",pinyin:"fàndiàn",vi:"nhà hàng"},{cn:"找",pinyin:"zhǎo",vi:"tìm"},{cn:"大学生",pinyin:"dàxuéshēng",vi:"sinh viên đại học"}],
+  vocab:[
+    {cn:"时候",pinyin:"shíhou",pos:"danh từ",vi:"lúc, thời điểm"},
+    {cn:"饭店",pinyin:"fàndiàn",pos:"danh từ",vi:"nhà hàng, khách sạn"},
+    {cn:"知道",pinyin:"zhīdào",pos:"động từ",vi:"biết"},
+    {cn:"正在",pinyin:"zhèngzài",pos:"phó từ",vi:"đang"},
+    {cn:"找",pinyin:"zhǎo",pos:"động từ",vi:"tìm"},
+    {cn:"开车",pinyin:"kāichē",pos:"động từ",vi:"lái xe"},
+    {cn:"车",pinyin:"chē",pos:"danh từ",vi:"xe"},
+    {cn:"在",pinyin:"zài",pos:"phó từ",vi:"đang (chỉ hành động tiếp diễn)"},
+    {cn:"读",pinyin:"dú",pos:"động từ",vi:"học (ở trường)"},
+    {cn:"大学",pinyin:"dàxué",pos:"danh từ",vi:"đại học"},
+    {cn:"大学生",pinyin:"dàxuéshēng",pos:"danh từ",vi:"sinh viên đại học"},
+    {cn:"学",pinyin:"xué",pos:"động từ",vi:"học"},
+    {cn:"医",pinyin:"yī",pos:"danh từ",vi:"y (ngành y)"},
+    {cn:"弟弟",pinyin:"dìdi",pos:"danh từ",vi:"em trai"},
+    {cn:"起床",pinyin:"qǐchuáng",pos:"động từ",vi:"dậy, ngủ dậy"},
+    {cn:"睡觉",pinyin:"shuìjiào",pos:"động từ",vi:"ngủ"},
+    {cn:"睡",pinyin:"shuì",pos:"động từ",vi:"ngủ"},
+    {cn:"那里",pinyin:"nàlǐ",pos:"đại từ",vi:"chỗ đó"},
+    {cn:"哪里",pinyin:"nǎlǐ",pos:"đại từ",vi:"chỗ nào"},
+    {cn:"昨天",pinyin:"zuótiān",pos:"danh từ",vi:"hôm qua"},
+    {cn:"问",pinyin:"wèn",pos:"động từ",vi:"hỏi"},
+    {cn:"对",pinyin:"duì",pos:"giới từ",vi:"đối với, với"},
+    {cn:"说",pinyin:"shuō",pos:"động từ",vi:"nói"},
+    {cn:"要",pinyin:"yào",pos:"năng nguyện động từ",vi:"muốn, định"},
+    {cn:"小朋友",pinyin:"xiǎopéngyou",pos:"danh từ",vi:"em nhỏ, bạn nhỏ"}
+  ],
+  dialogues:[
+    {label:"Bài khoá 1", situation:"Trên đường, Lý Văn đang tìm nhà hàng, Vương Nhất Phi gọi điện cho anh.",
+     lines:[
+       {s:"Vương Nhất Phi",cn:"喂，李文，你什么时候能到饭店？",py:"Wèi, Lǐ Wén, nǐ shénme shíhou néng dào fàndiàn?"},
+       {s:"Lý Văn",cn:"还不知道，正在找呢。它是不是在超市后边？",py:"Hái bù zhīdào, zhèngzài zhǎo ne. Tā shì bu shì zài chāoshì hòubian?"},
+       {s:"Vương Nhất Phi",cn:"是的。你开车没开车？",py:"Shì de. Nǐ kāichē méi kāichē?"},
+       {s:"Lý Văn",cn:"我没开车，坐车呢。",py:"Wǒ méi kāichē, zuò chē ne."}
+     ], vi:"Vương Nhất Phi: A lô Lý Văn, khi nào bạn đến được nhà hàng?\nLý Văn: Chưa biết, đang tìm đây. Nó có phải ở sau siêu thị không?\nVương Nhất Phi: Đúng vậy. Bạn có lái xe không?\nLý Văn: Mình không lái xe, đang đi xe (khách) đây."},
+    {label:"Bài khoá 2", situation:"Tại nhà hàng, sau khi gặp nhau, Vương Nhất Phi và Lý Văn trò chuyện.",
+     lines:[
+       {s:"Vương Nhất Phi",cn:"你还在读大学吗？",py:"Nǐ hái zài dú dàxué ma?"},
+       {s:"Lý Văn",cn:"对，我读大学呢，还是大学生。",py:"Duì, wǒ dú dàxué ne, hái shì dàxuéshēng."},
+       {s:"Vương Nhất Phi",cn:"你们学习忙不忙？",py:"Nǐmen xuéxí máng bu máng?"},
+       {s:"Lý Văn",cn:"非常忙，我学医，我们的课很多。",py:"Fēicháng máng, wǒ xué yī, wǒmen de kè hěn duō."}
+     ], vi:"Vương Nhất Phi: Bạn vẫn đang học đại học à?\nLý Văn: Vâng, mình đang học đại học, vẫn là sinh viên.\nVương Nhất Phi: Việc học có bận không?\nLý Văn: Bận lắm, mình học ngành y, tụi mình học nhiều lớp lắm."},
+    {label:"Bài khoá 3", situation:"Sáng thứ 7, Lưu Minh chuẩn bị đi làm thêm ở bệnh viện, nói chuyện với con gái trước khi đi.",
+     lines:[
+       {s:"Lưu Minh",cn:"弟弟起床没起床呢？",py:"Dìdi qǐchuáng méi qǐchuáng ne?"},
+       {s:"Lưu Tiểu Tuyết",cn:"没起床呢，还在睡觉。",py:"Méi qǐchuáng ne, hái zài shuìjiào."},
+       {s:"Lưu Minh",cn:"还睡呢？他今天去不去那里？",py:"Hái shuì ne? Tā jīntiān qù bu qù nàlǐ?"},
+       {s:"Lưu Tiểu Tuyết",cn:"去哪里？",py:"Qù nǎlǐ?"},
+       {s:"Lưu Minh",cn:"去超市。",py:"Qù chāoshì."},
+       {s:"Lưu Tiểu Tuyết",cn:"我昨天问他，他对我说，他不去，他今天要和小朋友玩。",py:"Wǒ zuótiān wèn tā, tā duì wǒ shuō, tā bú qù, tā jīntiān yào hé xiǎopéngyou wán."}
+     ], vi:"Lưu Minh: Em con dậy chưa?\nLưu Tiểu Tuyết: Chưa dậy đâu, vẫn đang ngủ.\nLưu Minh: Vẫn ngủ à? Hôm nay nó có đi đó không?\nLưu Tiểu Tuyết: Đi đâu ạ?\nLưu Minh: Đi siêu thị.\nLưu Tiểu Tuyết: Hôm qua con hỏi nó rồi, nó bảo con là không đi, hôm nay nó định chơi với các bạn."}
+  ],
+  grammar:[
+    {title:"Câu hỏi chính phản", vi:"Cấu trúc: \"x+不/没+x\", trong đó \"x\" là động từ hoặc tính từ. Với động từ dùng \"不/没\", với tính từ dùng \"不\".", examples:["它是不是在超市后边？","你去没去学校？","这件衣服好看不好看？"]},
+    {title:"Phó từ thời gian \"在/正在\"", vi:"Đặt trước động từ, biểu thị hành động đang diễn ra hoặc tình huống đang tiếp diễn. Có 2 dạng: (1) 在/正在+động từ; (2) 在/正在+động từ+呢. Ngoài ra còn dạng thứ 3: động từ+呢. Trả lời phủ định dùng \"没(有)\".", examples:["你还在读大学吗？","学生们在/正在上课呢。","我们读书呢。"]},
+    {title:"Năng nguyện động từ \"要\"", vi:"Đặt trước động từ, biểu thị muốn làm, định làm việc gì đó.", examples:["他今天要和小朋友玩。","妈妈要去超市。","白家月要在家里学中文。"]}
+  ],
+  tips:[],
+  exercises:[
+    {type:"fill", instruction:"Điền từ thích hợp.", bank:["正在","要","呢","没","是不是"]  ,
+     items:[
+       {q:"我____找饭店。", a:"正在"},
+       {q:"他今天____和小朋友玩。", a:"要"},
+       {q:"它____在超市后边？", a:"是不是"},
+       {q:"弟弟____起床，还在睡觉。", a:"没"}
+     ]},
+    {type:"translate", instruction:"Dịch sang tiếng Trung.",
+     items:[
+       {q:"Bạn có lái xe không?", a:"你开车没开车？"},
+       {q:"Tôi vẫn đang học đại học.", a:"我还在读大学。"},
+       {q:"Hôm nay nó định chơi với các bạn.", a:"他今天要和小朋友玩。"}
+     ]}
+  ]
+},
+{
+  id:12, cn:"昨天下雪了", pinyin:"Zuótiān xià xuě le", vi:"Hôm qua trời có tuyết",
+  objectives:["Nghe hiểu và mô tả tình hình thời tiết","Nghe hiểu và mô tả đơn giản tình trạng bệnh","Nắm cách dùng trợ từ ngữ khí \"了\" (1)","Nắm cách dùng cấu trúc \"太……了\"","Hiểu lợi ích của việc \"uống nước ấm\" khi ốm theo quan niệm người Trung Quốc"],
+  warmup:[{cn:"下雨",pinyin:"xiàyǔ",vi:"mưa"},{cn:"冷",pinyin:"lěng",vi:"lạnh"},{cn:"生病",pinyin:"shēngbìng",vi:"bị ốm"},{cn:"看病",pinyin:"kànbìng",vi:"khám bệnh"},{cn:"雪",pinyin:"xuě",vi:"tuyết"},{cn:"水",pinyin:"shuǐ",vi:"nước"}],
+  vocab:[
+    {cn:"天气",pinyin:"tiānqì",pos:"danh từ",vi:"thời tiết"},
+    {cn:"这里",pinyin:"zhèlǐ",pos:"đại từ",vi:"ở đây"},
+    {cn:"天",pinyin:"tiān",pos:"danh từ",vi:"trời"},
+    {cn:"下雨",pinyin:"xiàyǔ",pos:"",vi:"mưa (trời mưa)"},
+    {cn:"了",pinyin:"le",pos:"trợ từ",vi:"(trợ từ biến hoá)"},
+    {cn:"雨",pinyin:"yǔ",pos:"danh từ",vi:"mưa"},
+    {cn:"有点儿",pinyin:"yǒudiǎnr",pos:"phó từ",vi:"hơi, có chút"},
+    {cn:"觉得",pinyin:"juéde",pos:"động từ",vi:"cảm thấy"},
+    {cn:"冷",pinyin:"lěng",pos:"tính từ",vi:"lạnh"},
+    {cn:"下",pinyin:"xià",pos:"động từ",vi:"rơi, xuống (mưa, tuyết)"},
+    {cn:"雪",pinyin:"xuě",pos:"danh từ",vi:"tuyết"},
+    {cn:"来",pinyin:"lái",pos:"động từ",vi:"đến, tới"},
+    {cn:"公司",pinyin:"gōngsī",pos:"danh từ",vi:"công ty"},
+    {cn:"生病",pinyin:"shēngbìng",pos:"động từ",vi:"bị ốm"},
+    {cn:"看病",pinyin:"kànbìng",pos:"động từ",vi:"khám bệnh"},
+    {cn:"病",pinyin:"bìng",pos:"động từ",vi:"ốm, bệnh"},
+    {cn:"一点儿",pinyin:"yìdiǎnr",pos:"lượng từ",vi:"một chút"},
+    {cn:"药",pinyin:"yào",pos:"danh từ",vi:"thuốc"},
+    {cn:"天",pinyin:"tiān",pos:"lượng từ",vi:"ngày"},
+    {cn:"回",pinyin:"huí",pos:"động từ",vi:"về, trở về"},
+    {cn:"再",pinyin:"zài",pos:"phó từ",vi:"rồi hãy, mới"},
+    {cn:"喝",pinyin:"hē",pos:"động từ",vi:"uống"},
+    {cn:"热",pinyin:"rè",pos:"tính từ",vi:"nóng, ấm"},
+    {cn:"水",pinyin:"shuǐ",pos:"danh từ",vi:"nước"}
+  ],
+  dialogues:[
+    {label:"Bài khoá 1", situation:"Vương Nhất Tuyết gọi điện hỏi thăm Vương Nhất Phi về tình hình bên đó.",
+     lines:[
+       {s:"Vương Nhất Tuyết",cn:"今天天气怎么样？",py:"Jīntiān tiānqì zěnmeyàng?"},
+       {s:"Vương Nhất Phi",cn:"这里的天不太好，下雨了。",py:"Zhèlǐ de tiān bú tài hǎo, xià yǔ le."},
+       {s:"Vương Nhất Tuyết",cn:"雨大吗？",py:"Yǔ dà ma?"},
+       {s:"Vương Nhất Phi",cn:"有点儿大，我觉得很冷。",py:"Yǒudiǎnr dà, wǒ juéde hěn lěng."}
+     ], vi:"Vương Nhất Tuyết: Hôm nay thời tiết thế nào?\nVương Nhất Phi: Ở đây trời không đẹp lắm, mưa rồi.\nVương Nhất Tuyết: Mưa to không?\nVương Nhất Phi: Hơi to, chị thấy lạnh lắm."},
+    {label:"Bài khoá 2", situation:"Trong thang máy công ty, Vương Nhất Tuyết và Dương Đồng Lạc trò chuyện.",
+     lines:[
+       {s:"Vương Nhất Tuyết",cn:"昨天下雪了。",py:"Zuótiān xià xuě le."},
+       {s:"Dương Đồng Lạc",cn:"是的，太冷了。",py:"Shì de, tài lěng le."},
+       {s:"Vương Nhất Tuyết",cn:"你昨天没来公司，生病了？",py:"Nǐ zuótiān méi lái gōngsī, shēngbìng le?"},
+       {s:"Dương Đồng Lạc",cn:"对，我昨天去医院看病了。",py:"Duì, wǒ zuótiān qù yīyuàn kànbìng le."}
+     ], vi:"Vương Nhất Tuyết: Hôm qua có tuyết rồi đấy.\nDương Đồng Lạc: Vâng, lạnh quá.\nVương Nhất Tuyết: Hôm qua bạn không đến công ty, bị ốm à?\nDương Đồng Lạc: Vâng, hôm qua tôi đi khám bệnh ở viện."},
+    {label:"Bài khoá 3", situation:"Hôm qua ở bệnh viện, bác sĩ khám cho Dương Đồng Lạc.",
+     lines:[
+       {s:"Dương Đồng Lạc",cn:"医生，我病了。",py:"Yīshēng, wǒ bìng le."},
+       {s:"Bác sĩ Hồ",cn:"我看看。你觉得怎么样？",py:"Wǒ kànkan. Nǐ juéde zěnmeyàng?"},
+       {s:"Dương Đồng Lạc",cn:"我很冷。",py:"Wǒ hěn lěng."},
+       {s:"Bác sĩ Hồ",cn:"好的，吃一点儿药，今天休息半天吧。",py:"Hǎo de, chī yìdiǎnr yào, jīntiān xiūxi bàn tiān ba."},
+       {s:"Dương Đồng Lạc",cn:"好的。",py:"Hǎo de."},
+       {s:"Bác sĩ Hồ",cn:"回家后再喝些热水。",py:"Huí jiā hòu zài hē xiē rè shuǐ."}
+     ], vi:"Dương Đồng Lạc: Bác sĩ ơi, cháu ốm rồi.\nBác sĩ Hồ: Để tôi xem nào. Cháu thấy thế nào?\nDương Đồng Lạc: Cháu thấy lạnh lắm.\nBác sĩ Hồ: Được, uống chút thuốc rồi hôm nay nghỉ nửa ngày nhé.\nDương Đồng Lạc: Vâng ạ.\nBác sĩ Hồ: Về nhà nhớ uống thêm ít nước ấm nhé."}
+  ],
+  grammar:[
+    {title:"Câu không chủ-vị", vi:"Là câu do từ/cụm từ tạo thành, không phân biệt rõ chủ ngữ và vị ngữ, thường dùng trong khẩu ngữ.", examples:["下雨了。","下雪了。","上课了。","真漂亮！","对不起！","没关系！"]},
+    {title:"Trợ từ ngữ khí \"了\" (1)", vi:"Đặt cuối câu hoặc chỗ ngắt trong câu, biểu thị có sự thay đổi hoặc xuất hiện tình huống mới. Khi trả lời phủ định dùng phó từ \"没\", cuối câu không dùng \"了\".", examples:["下雨了。","十二点了，吃午饭吧。","弟弟起床了吗？— 没起床呢。"]},
+    {title:"Cấu trúc \"太……了\"", vi:"Dùng để cảm thán một mức độ rất cao hoặc rất sâu sắc.", examples:["太冷了！","这个杯子太小了。","我们今天太高兴了！"]}
+  ],
+  tips:["\"看看\" là hình thức láy của \"看\", biểu thị hành động diễn ra trong thời gian ngắn.","Người Trung Quốc thích uống nước ấm, cho rằng nước ấm tốt cho sức khoẻ hơn."],
+  exercises:[
+    {type:"fill", instruction:"Điền từ thích hợp.", bank:["了","太","觉得","看看","有点儿"],
+     items:[
+       {q:"昨天下雪____。", a:"了"},
+       {q:"____冷了！", a:"太"},
+       {q:"我____很冷。", a:"觉得"},
+       {q:"医生：我____。你觉得怎么样？", a:"看看"}
+     ]},
+    {type:"translate", instruction:"Dịch sang tiếng Trung.",
+     items:[
+       {q:"Hôm nay thời tiết thế nào?", a:"今天天气怎么样？"},
+       {q:"Hôm qua có tuyết rồi.", a:"昨天下雪了。"},
+       {q:"Về nhà nhớ uống thêm ít nước ấm.", a:"回家后再喝些热水。"}
+     ]}
+  ]
+},
+{
+  id:13, cn:"请给我一杯茶", pinyin:"Qǐng gěi wǒ yì bēi chá", vi:"Cho tôi xin một cốc trà",
+  objectives:["Nghe hiểu và dùng câu song tân ngữ (1) để hỏi hoặc đưa đồ cho người khác","Nắm cách dùng năng nguyện động từ \"可以\"","Nắm cấu trúc \"động từ+一下\"","Hiểu các cách nói thường dùng khi gọi món"],
+  warmup:[{cn:"面包",pinyin:"miànbāo",vi:"bánh mì"},{cn:"说",pinyin:"shuō",vi:"nói"},{cn:"请",pinyin:"qǐng",vi:"mời, xin"},{cn:"给",pinyin:"gěi",vi:"cho, đưa"},{cn:"茶",pinyin:"chá",vi:"trà"},{cn:"一半",pinyin:"yíbàn",vi:"một nửa"}],
+  vocab:[
+    {cn:"可以",pinyin:"kěyǐ",pos:"năng nguyện động từ",vi:"có thể, được"},
+    {cn:"再",pinyin:"zài",pos:"phó từ",vi:"lại, thêm"},
+    {cn:"问题",pinyin:"wèntí",pos:"danh từ",vi:"câu hỏi, vấn đề"},
+    {cn:"卖",pinyin:"mài",pos:"động từ",vi:"bán"},
+    {cn:"打电话",pinyin:"dǎ diànhuà",pos:"",vi:"gọi điện thoại"},
+    {cn:"一下",pinyin:"yíxià",pos:"lượng từ",vi:"một chút, thử xem"},
+    {cn:"服务员",pinyin:"fúwùyuán",pos:"danh từ",vi:"nhân viên phục vụ"},
+    {cn:"女士",pinyin:"nǚshì",pos:"danh từ",vi:"quý cô, quý bà"},
+    {cn:"请",pinyin:"qǐng",pos:"động từ",vi:"mời, xin"},
+    {cn:"坐",pinyin:"zuò",pos:"động từ",vi:"ngồi"},
+    {cn:"给",pinyin:"gěi",pos:"động từ",vi:"cho, đưa"},
+    {cn:"杯",pinyin:"bēi",pos:"danh từ",vi:"cốc, ly"},
+    {cn:"要",pinyin:"yào",pos:"động từ",vi:"gọi, yêu cầu"},
+    {cn:"早饭",pinyin:"zǎofàn",pos:"danh từ",vi:"bữa sáng"},
+    {cn:"这个",pinyin:"zhège",pos:"đại từ",vi:"cái này"},
+    {cn:"面包",pinyin:"miànbāo",pos:"danh từ",vi:"bánh mì"},
+    {cn:"鸡蛋",pinyin:"jīdàn",pos:"danh từ",vi:"trứng gà"},
+    {cn:"先生",pinyin:"xiānsheng",pos:"danh từ",vi:"quý ông, ngài"},
+    {cn:"一半",pinyin:"yíbàn",pos:"số từ",vi:"một nửa"},
+    {cn:"茶",pinyin:"chá",pos:"danh từ",vi:"trà"}
+  ],
+  dialogues:[
+    {label:"Bài khoá 1", situation:"Sau giờ học, Bạch Gia Nguyệt hỏi cô Vương một câu hỏi.",
+     lines:[
+       {s:"Bạch Gia Nguyệt",cn:"王老师，我可以再问您一个问题吗？",py:"Wáng lǎoshī, wǒ kěyǐ zài wèn nín yí gè wèntí ma?"},
+       {s:"Vương Nhất Phi",cn:"可以。你有什么问题？",py:"Kěyǐ. Nǐ yǒu shénme wèntí?"},
+       {s:"Bạch Gia Nguyệt",cn:"那个小店卖不卖手机？",py:"Nàge xiǎo diàn mài bu mài shǒujī?"},
+       {s:"Vương Nhất Phi",cn:"我不知道。你可以打电话问一下。",py:"Wǒ bù zhīdào. Nǐ kěyǐ dǎ diànhuà wèn yíxià."}
+     ], vi:"Bạch Gia Nguyệt: Cô Vương ơi, em có thể hỏi cô thêm một câu được không ạ?\nVương Nhất Phi: Được chứ. Em có câu hỏi gì?\nBạch Gia Nguyệt: Cửa hàng nhỏ đó có bán điện thoại không ạ?\nVương Nhất Phi: Cô không biết. Em có thể gọi điện hỏi thử xem."},
+    {label:"Bài khoá 2", situation:"Tại quán cà phê, Vương Nhất Tuyết muốn ăn sáng.",
+     lines:[
+       {s:"Phục vụ",cn:"女士，请坐！您喝什么？",py:"Nǚshì, qǐng zuò! Nín hē shénme?"},
+       {s:"Vương Nhất Tuyết",cn:"我看一下。请给我一杯牛奶。",py:"Wǒ kàn yíxià. Qǐng gěi wǒ yì bēi niúnǎi."},
+       {s:"Phục vụ",cn:"好的。您还要什么？",py:"Hǎo de. Nín hái yào shénme?"},
+       {s:"Vương Nhất Tuyết",cn:"我还没吃早饭，再要这个面包和鸡蛋吧。",py:"Wǒ hái méi chī zǎofàn, zài yào zhège miànbāo hé jīdàn ba."}
+     ], vi:"Phục vụ: Thưa chị, mời chị ngồi! Chị dùng gì ạ?\nVương Nhất Tuyết: Để tôi xem đã. Cho tôi một cốc sữa.\nPhục vụ: Vâng ạ. Chị dùng thêm gì nữa không?\nVương Nhất Tuyết: Tôi chưa ăn sáng, cho thêm cái bánh mì và trứng này nữa nhé."},
+    {label:"Bài khoá 3", situation:"Tại nhà hàng, Lưu Minh gọi món.",
+     lines:[
+       {s:"Phục vụ",cn:"先生，请坐！您要什么？",py:"Xiānsheng, qǐng zuò! Nín yào shénme?"},
+       {s:"Lưu Minh",cn:"我要一斤饺子。",py:"Wǒ yào yì jīn jiǎozi."},
+       {s:"Phục vụ",cn:"好的。一斤饺子四十个。",py:"Hǎo de. Yì jīn jiǎozi sìshí gè."},
+       {s:"Lưu Minh",cn:"四十个太多了，我要一半吧。",py:"Sìshí gè tài duō le, wǒ yào yíbàn ba."},
+       {s:"Phục vụ",cn:"半斤20个。您想喝什么？",py:"Bàn jīn èrshí gè. Nín xiǎng hē shénme?"},
+       {s:"Lưu Minh",cn:"请给我一杯茶吧。",py:"Qǐng gěi wǒ yì bēi chá ba."}
+     ], vi:"Phục vụ: Thưa anh, mời anh ngồi! Anh dùng gì ạ?\nLưu Minh: Cho tôi một cân sủi cảo.\nPhục vụ: Vâng. Một cân sủi cảo có 40 cái ạ.\nLưu Minh: 40 cái nhiều quá, cho tôi nửa thôi.\nPhục vụ: Nửa cân là 20 cái. Anh muốn uống gì ạ?\nLưu Minh: Cho tôi một cốc trà nhé."}
+  ],
+  grammar:[
+    {title:"Câu song tân ngữ (1)", vi:"Là câu có một động từ mang hai tân ngữ. Trong tập này học các câu song tân ngữ tạo bởi \"给, 问\".", examples:["请给我一杯牛奶。","白家月给安妮一个苹果。","我问老师两个问题。"]},
+    {title:"Năng nguyện động từ \"可以\"", vi:"Đặt trước động từ, biểu thị khả năng, năng lực hoặc sự cho phép.", examples:["我可以再问您一个问题吗？","你们可以看这本书。","我可以坐吗？— 可以，请坐！"]},
+    {title:"Cấu trúc \"động từ+一下\"", vi:"Biểu thị làm một lần hoặc thử làm, thời gian hành động ngắn.", examples:["你可以打电话问一下。","请休息一下。","你看一下吧。"]}
+  ],
+  tips:[],
+  exercises:[
+    {type:"fill", instruction:"Điền từ thích hợp.", bank:["可以","一下","给","一半","要"],
+     items:[
+       {q:"我____再问您一个问题吗？", a:"可以"},
+       {q:"你可以打电话问____。", a:"一下"},
+       {q:"请____我一杯牛奶。", a:"给"},
+       {q:"四十个太多了，我____一半吧。", a:"要"}
+     ]},
+    {type:"translate", instruction:"Dịch sang tiếng Trung.",
+     items:[
+       {q:"Cho tôi xin một cốc trà.", a:"请给我一杯茶。"},
+       {q:"Tôi có thể hỏi thêm một câu được không?", a:"我可以再问一个问题吗？"},
+       {q:"Bạn có thể gọi điện hỏi thử xem.", a:"你可以打电话问一下。"}
+     ]}
+  ]
+},
+{
+  id:14, cn:"我看了一个电影", pinyin:"Wǒ kànle yí gè diànyǐng", vi:"Tôi đã xem một bộ phim",
+  objectives:["Nghe hiểu và dùng động thái trợ từ \"了\" (2) diễn đạt hành động đã xảy ra/hoàn thành","Nắm cách dùng phạm vi phó từ \"都\"","Nắm cách dùng cơ bản của một số ly hợp từ","Hiểu và mô tả tình hình học tập"],
+  warmup:[{cn:"火车",pinyin:"huǒchē",vi:"tàu hoả"},{cn:"看见",pinyin:"kànjiàn",vi:"nhìn thấy"},{cn:"汉字",pinyin:"Hànzì",vi:"chữ Hán"},{cn:"听",pinyin:"tīng",vi:"nghe"},{cn:"小学生",pinyin:"xiǎoxuéshēng",vi:"học sinh tiểu học"},{cn:"说话",pinyin:"shuōhuà",vi:"nói chuyện"}],
+  vocab:[
+    {cn:"上",pinyin:"shàng",pos:"động từ",vi:"lên, lên (xe/tàu)"},
+    {cn:"火车",pinyin:"huǒchē",pos:"danh từ",vi:"tàu hoả"},
+    {cn:"中午",pinyin:"zhōngwǔ",pos:"danh từ",vi:"buổi trưa"},
+    {cn:"开",pinyin:"kāi",pos:"động từ",vi:"khởi hành (xe cộ)"},
+    {cn:"有些",pinyin:"yǒuxiē",pos:"đại từ",vi:"một số, có một phần"},
+    {cn:"有的",pinyin:"yǒude",pos:"đại từ",vi:"có (người/cái)"},
+    {cn:"了",pinyin:"le",pos:"trợ từ",vi:"(trợ từ hoàn thành sau động từ)"},
+    {cn:"写",pinyin:"xiě",pos:"động từ",vi:"viết"},
+    {cn:"都",pinyin:"dōu",pos:"phó từ",vi:"đều, tất cả"},
+    {cn:"听见",pinyin:"tīngjiàn",pos:"động từ",vi:"nghe thấy"},
+    {cn:"不要",pinyin:"búyào",pos:"phó từ",vi:"đừng"},
+    {cn:"说话",pinyin:"shuōhuà",pos:"động từ",vi:"nói chuyện"},
+    {cn:"听",pinyin:"tīng",pos:"động từ",vi:"nghe"},
+    {cn:"哪些",pinyin:"nǎxiē",pos:"đại từ",vi:"những cái nào"},
+    {cn:"字",pinyin:"zì",pos:"danh từ",vi:"chữ"},
+    {cn:"明年",pinyin:"míngnián",pos:"danh từ",vi:"năm sau"},
+    {cn:"中学",pinyin:"zhōngxué",pos:"danh từ",vi:"trung học"},
+    {cn:"小学",pinyin:"xiǎoxué",pos:"danh từ",vi:"tiểu học"},
+    {cn:"中学生",pinyin:"zhōngxuéshēng",pos:"danh từ",vi:"học sinh trung học"},
+    {cn:"小学生",pinyin:"xiǎoxuéshēng",pos:"danh từ",vi:"học sinh tiểu học"},
+    {cn:"上学",pinyin:"shàngxué",pos:"động từ",vi:"đi học, bắt đầu đi học"},
+    {cn:"他们",pinyin:"tāmen",pos:"đại từ",vi:"họ (nam/chung)"},
+    {cn:"她们",pinyin:"tāmen",pos:"đại từ",vi:"họ (nữ)"},
+    {cn:"它们",pinyin:"tāmen",pos:"đại từ",vi:"chúng nó (vật)"},
+    {cn:"晚",pinyin:"wǎn",pos:"tính từ",vi:"muộn"}
+  ],
+  properNouns:[{cn:"汉语",pinyin:"Hànyǔ",vi:"tiếng Hán/tiếng Trung"},{cn:"汉字",pinyin:"Hànzì",vi:"chữ Hán"}],
+  dialogues:[
+    {label:"Bài khoá 1", situation:"Sau giờ học, Bạch Gia Nguyệt và Trần Thiên Trung nói về chuyến đi ngoại khoá lần trước.",
+     lines:[
+       {s:"Bạch Gia Nguyệt",cn:"你们上火车后看见王老师了吗？",py:"Nǐmen shàng huǒchē hòu kànjiàn Wáng lǎoshī le ma?"},
+       {s:"Trần Thiên Trung",cn:"没看见。中午车开后，有些人在看书，有些人睡觉了。",py:"Méi kànjiàn. Zhōngwǔ chē kāi hòu, yǒuxiē rén zài kànshū, yǒuxiē rén shuìjiào le."},
+       {s:"Bạch Gia Nguyệt",cn:"你呢？",py:"Nǐ ne?"},
+       {s:"Trần Thiên Trung",cn:"我看了一个电影。",py:"Wǒ kànle yí gè diànyǐng."}
+     ], vi:"Bạch Gia Nguyệt: Sau khi lên tàu các bạn có thấy cô Vương không?\nTrần Thiên Trung: Không thấy. Sau khi tàu chạy lúc trưa, có người đọc sách, có người ngủ.\nBạch Gia Nguyệt: Còn bạn thì sao?\nTrần Thiên Trung: Mình đã xem một bộ phim."},
+    {label:"Bài khoá 2", situation:"Trên lớp, Vương Nhất Phi hỏi học sinh về tình hình học tập.",
+     lines:[
+       {s:"Vương Nhất Phi",cn:"你们会说汉语了，也会写汉字了吗？",py:"Nǐmen huì shuō Hànyǔ le, yě huì xiě Hànzì le ma?"},
+       {s:"Bạch Gia Nguyệt",cn:"我们都会写了。",py:"Wǒmen dōu huì xiě le."},
+       {s:"Trần Thiên Trung",cn:"老师，我听不见。",py:"Lǎoshī, wǒ tīng bú jiàn."},
+       {s:"Vương Nhất Phi",cn:"请大家不要说话！请听老师的问题：你们都会写哪些汉字了？",py:"Qǐng dàjiā búyào shuōhuà! Qǐng tīng lǎoshī de wèntí: nǐmen dōu huì xiě nǎxiē Hànzì le?"},
+       {s:"Trần Thiên Trung",cn:"我会写这些字了，您看！",py:"Wǒ huì xiě zhèxiē zì le, nín kàn!"}
+     ], vi:"Vương Nhất Phi: Các em biết nói tiếng Trung rồi, có biết viết chữ Hán chưa?\nBạch Gia Nguyệt: Chúng em đều biết viết rồi ạ.\nTrần Thiên Trung: Cô ơi, em không nghe rõ.\nVương Nhất Phi: Mọi người im lặng nào! Nghe cô hỏi: các em đã biết viết những chữ Hán nào rồi?\nTrần Thiên Trung: Em biết viết những chữ này rồi, cô xem này!"},
+    {label:"Bài khoá 3", situation:"Ở nhà, Lưu Minh và Vương Nhất Tuyết bàn về việc học của con.",
+     lines:[
+       {s:"Lưu Minh",cn:"明年女儿上中学。",py:"Míngnián nǚ'ér shàng zhōngxué."},
+       {s:"Vương Nhất Tuyết",cn:"对。儿子也上小学了。",py:"Duì. Érzi yě shàng xiǎoxué le."},
+       {s:"Lưu Minh",cn:"我们家有了一个中学生。",py:"Wǒmen jiā yǒule yí gè zhōngxuéshēng."},
+       {s:"Vương Nhất Tuyết",cn:"还有了一个小学生。",py:"Hái yǒule yí gè xiǎoxuéshēng."},
+       {s:"Lưu Minh",cn:"上学后，他们都忙了。",py:"Shàngxué hòu, tāmen dōu máng le."},
+       {s:"Vương Nhất Tuyết",cn:"是的。太晚了，睡觉吧。",py:"Shì de. Tài wǎn le, shuìjiào ba."}
+     ], vi:"Lưu Minh: Sang năm con gái lên cấp 2.\nVương Nhất Tuyết: Đúng rồi. Con trai cũng vào lớp 1 rồi.\nLưu Minh: Nhà mình có một bạn học sinh cấp 2 rồi đấy.\nVương Nhất Tuyết: Còn có thêm một bạn học sinh tiểu học nữa.\nLưu Minh: Đi học rồi, hai đứa đều bận cả.\nVương Nhất Tuyết: Đúng vậy. Muộn rồi, đi ngủ thôi."}
+  ],
+  grammar:[
+    {title:"Động thái trợ từ \"了\" (2)", vi:"Đặt sau động từ, biểu thị hành động đã xảy ra hoặc hoàn thành. Phủ định dùng \"没\", không thêm \"了\".", examples:["我看了一个电影。","我买了一个新电脑。","我昨天没去商店买东西。"]},
+    {title:"Ly hợp từ (1)", vi:"Các từ như \"上课、下课、上班、下班、说话、读书、睡觉、看病、生病\" là một loại kết cấu động từ đặc biệt, có thể hợp lại thành từ hoặc tách ra thêm thành phần khác ở giữa thành cụm từ, nên gọi là ly hợp từ.", examples:["睡觉 → 睡了觉 / 睡了一觉","上课 → 上了课 / 上中文课","说话 → 说了话 / 说了很多话"]},
+    {title:"Phạm vi phó từ \"都\"", vi:"Biểu thị toàn bộ, khái quát; đối tượng được khái quát đứng trước \"都\". Khi phủ định, từ phủ định đứng sau \"都\".", examples:["我们都会写了。","我和我的朋友们都去。","同学们都没听见。"]}
+  ],
+  tips:["Có 2 đại từ gần giống: \"她们\" chỉ nhóm nữ giới (không gồm người nói và người nghe), \"它们\" chỉ nhiều sự vật. 3 từ đọc giống nhau nhưng nghĩa khác nhau."],
+  exercises:[
+    {type:"fill", instruction:"Điền từ thích hợp.", bank:["了","都","没","不要","一个"],
+     items:[
+       {q:"我看____一个电影。", a:"了"},
+       {q:"我们____会写了。", a:"都"},
+       {q:"我昨天____去超市买东西。", a:"没"},
+       {q:"请大家____说话！", a:"不要"}
+     ]},
+    {type:"translate", instruction:"Dịch sang tiếng Trung.",
+     items:[
+       {q:"Tôi đã xem một bộ phim.", a:"我看了一个电影。"},
+       {q:"Chúng em đều biết viết rồi.", a:"我们都会写了。"},
+       {q:"Muộn rồi, đi ngủ thôi.", a:"太晚了，睡觉吧。"}
+     ]}
+  ]
+},
+{
+  id:15, cn:"大兴机场见！", pinyin:"Dàxīng Jīchǎng jiàn!", vi:"Hẹn gặp ở sân bay Đại Hưng!",
+  objectives:["Nghe hiểu và dùng từ ngữ liên quan diễn đạt nguyện vọng, kế hoạch du lịch","Nắm câu phức liên hợp \"……，还/也……\"","Hiểu văn hoá bàn ăn và lễ nghi đãi khách của người Trung Quốc","Hiểu về Bắc Kinh — thủ đô Trung Quốc"],
+  warmup:[{cn:"北京",pinyin:"Běijīng",vi:"Bắc Kinh"},{cn:"好玩儿",pinyin:"hǎowánr",vi:"hay, thú vị"},{cn:"飞机",pinyin:"fēijī",vi:"máy bay"},{cn:"早饭",pinyin:"zǎofàn",vi:"bữa sáng"},{cn:"早",pinyin:"zǎo",vi:"sớm"},{cn:"男朋友",pinyin:"nánpéngyou",vi:"bạn trai"}],
+  vocab:[
+    {cn:"爱",pinyin:"ài",pos:"động từ",vi:"thích, yêu thích"},
+    {cn:"哪个",pinyin:"nǎge",pos:"đại từ",vi:"cái nào"},
+    {cn:"去年",pinyin:"qùnián",pos:"danh từ",vi:"năm ngoái"},
+    {cn:"男朋友",pinyin:"nánpéngyou",pos:"danh từ",vi:"bạn trai"},
+    {cn:"几",pinyin:"jǐ",pos:"số từ",vi:"vài, mấy"},
+    {cn:"年",pinyin:"nián",pos:"danh từ",vi:"năm"},
+    {cn:"好玩儿",pinyin:"hǎowánr",pos:"tính từ",vi:"hay, thú vị"},
+    {cn:"飞机",pinyin:"fēijī",pos:"danh từ",vi:"máy bay"},
+    {cn:"要",pinyin:"yào",pos:"động từ",vi:"cần, mất (thời gian)"},
+    {cn:"小时",pinyin:"xiǎoshí",pos:"danh từ",vi:"giờ (đồng hồ)"},
+    {cn:"家人",pinyin:"jiārén",pos:"danh từ",vi:"người nhà"},
+    {cn:"时间",pinyin:"shíjiān",pos:"danh từ",vi:"thời gian"},
+    {cn:"机场",pinyin:"jīchǎng",pos:"danh từ",vi:"sân bay"},
+    {cn:"接",pinyin:"jiē",pos:"động từ",vi:"đón"},
+    {cn:"住",pinyin:"zhù",pos:"động từ",vi:"ở, sống"},
+    {cn:"早",pinyin:"zǎo",pos:"tính từ",vi:"sớm"},
+    {cn:"那",pinyin:"nà",pos:"liên từ",vi:"vậy thì"}
+  ],
+  properNouns:[{cn:"西安",pinyin:"Xī'ān",vi:"Tây An"},{cn:"北京",pinyin:"Běijīng",vi:"Bắc Kinh"},{cn:"大兴机场",pinyin:"Dàxīng Jīchǎng",vi:"Sân bay Đại Hưng"}],
+  dialogues:[
+    {label:"Bài khoá 1", situation:"Tại nhà Lý Văn, anh mời bạn bè như Trần Thiên Trung, Bạch Gia Nguyệt thưởng thức món Trung.",
+     lines:[
+       {s:"Lý Văn",cn:"你们爱吃哪个菜？",py:"Nǐmen ài chī nǎge cài?"},
+       {s:"Bạch Gia Nguyệt",cn:"我喜欢这个，也喜欢那个。",py:"Wǒ xǐhuan zhège, yě xǐhuan nàge."},
+       {s:"Trần Thiên Trung",cn:"这些菜都好吃，还很好看。",py:"Zhèxiē cài dōu hǎochī, hái hěn hǎokàn."},
+       {s:"Lý Văn",cn:"我爱吃中国菜，也喜欢做。大家多吃点儿。",py:"Wǒ ài chī Zhōngguó cài, yě xǐhuan zuò. Dàjiā duō chī diǎnr."}
+     ], vi:"Lý Văn: Mọi người thích ăn món nào?\nBạch Gia Nguyệt: Mình thích món này, cũng thích cả món kia.\nTrần Thiên Trung: Mấy món này đều ngon, lại còn đẹp mắt nữa.\nLý Văn: Mình thích ăn món Trung, cũng thích nấu nữa. Mọi người ăn nhiều vào nhé."},
+    {label:"Bài khoá 2", situation:"Tại nhà Lý Văn, mọi người vừa ăn vừa bàn kế hoạch nghỉ lễ.",
+     lines:[
+       {s:"Lý Văn",cn:"你们都想去哪儿？",py:"Nǐmen dōu xiǎng qù nǎr?"},
+       {s:"Annie",cn:"去年我和男朋友去了西安，今年我想去北京。",py:"Qùnián wǒ hé nánpéngyou qùle Xī'ān, jīnnián wǒ xiǎng qù Běijīng."},
+       {s:"Bạch Gia Nguyệt",cn:"前几年我去了西安，非常好玩儿。今年我也想去北京。",py:"Qián jǐ nián wǒ qùle Xī'ān, fēicháng hǎowánr. Jīnnián wǒ yě xiǎng qù Běijīng."},
+       {s:"Lý Văn",cn:"我和王老师都是北京人，北京非常漂亮。",py:"Wǒ hé Wáng lǎoshī dōu shì Běijīng rén, Běijīng fēicháng piàoliang."}
+     ], vi:"Lý Văn: Mọi người đều muốn đi đâu?\nAnnie: Năm ngoái mình và bạn trai đã đi Tây An, năm nay mình muốn đi Bắc Kinh.\nBạch Gia Nguyệt: Vài năm trước mình đã đi Tây An, vui lắm. Năm nay mình cũng muốn đi Bắc Kinh.\nLý Văn: Mình và cô Vương đều là người Bắc Kinh, Bắc Kinh đẹp lắm."},
+    {label:"Bài khoá 3", situation:"Ngoài lớp học, Bạch Gia Nguyệt, Annie và cô Vương bàn về chuyến đi Bắc Kinh.",
+     lines:[
+       {s:"Vương Nhất Phi",cn:"你们的飞机到北京要几个小时？",py:"Nǐmen de fēijī dào Běijīng yào jǐ ge xiǎoshí?"},
+       {s:"Bạch Gia Nguyệt",cn:"九个小时。",py:"Jiǔ ge xiǎoshí."},
+       {s:"Vương Nhất Phi",cn:"我家人都在北京，星期天我姐姐也有时间，她可以去机场接你们，你们也可以住我家。",py:"Wǒ jiārén dōu zài Běijīng, xīngqītiān wǒ jiějie yě yǒu shíjiān, tā kěyǐ qù jīchǎng jiē nǐmen, nǐmen yě kěyǐ zhù wǒ jiā."},
+       {s:"Annie",cn:"我们星期日早上八点到大兴机场，早不早？",py:"Wǒmen xīngqīrì zǎoshang bā diǎn dào Dàxīng Jīchǎng, zǎo bu zǎo?"},
+       {s:"Vương Nhất Phi",cn:"不早。",py:"Bù zǎo."},
+       {s:"Bạch Gia Nguyệt",cn:"谢谢老师！那我们和您姐姐在大兴机场见！",py:"Xièxie lǎoshī! Nà wǒmen hé nín jiějie zài Dàxīng Jīchǎng jiàn!"}
+     ], vi:"Vương Nhất Phi: Máy bay của các em đến Bắc Kinh mất mấy tiếng?\nBạch Gia Nguyệt: Chín tiếng ạ.\nVương Nhất Phi: Người nhà cô đều ở Bắc Kinh, chủ nhật chị gái cô cũng rảnh, chị ấy có thể ra sân bay đón các em, các em cũng có thể ở nhà cô.\nAnnie: Bọn em đến sân bay Đại Hưng lúc 8 giờ sáng chủ nhật, có sớm không ạ?\nVương Nhất Phi: Không sớm đâu.\nBạch Gia Nguyệt: Cảm ơn cô! Vậy bọn em hẹn gặp chị của cô ở sân bay Đại Hưng nhé!"}
+  ],
+  grammar:[
+    {title:"Câu phức liên hợp \"……，还/也……\"", vi:"Câu phức liên hợp gồm hai hoặc nhiều vế câu có quan hệ logic và cấu trúc song song với nhau.", examples:["我喜欢这个，也喜欢那个。","王老师是北京人，李文也是北京人。","我喜欢喝中国茶，还喜欢吃中国菜。"]}
+  ],
+  tips:["Mời khách ăn thêm (劝饭) là một nét văn hoá bàn ăn kiểu Trung Hoa, thể hiện sự nhiệt tình hiếu khách."],
+  exercises:[
+    {type:"fill", instruction:"Điền từ thích hợp.", bank:["也","还","都","要","接"],
+     items:[
+       {q:"我喜欢这个，____喜欢那个。", a:"也"},
+       {q:"这些菜____好吃，____很好看。", a:"都 / 还"},
+       {q:"飞机到北京____几个小时？", a:"要"},
+       {q:"她可以去机场____你们。", a:"接"}
+     ]},
+    {type:"translate", instruction:"Dịch sang tiếng Trung.",
+     items:[
+       {q:"Mọi người đều muốn đi đâu?", a:"你们都想去哪儿？"},
+       {q:"Máy bay đến Bắc Kinh mất mấy tiếng?", a:"飞机到北京要几个小时？"},
+       {q:"Hẹn gặp ở sân bay Đại Hưng!", a:"大兴机场见！"}
+     ]}
+  ]
+}
+];</script><script>
+const TABS=[{id:'vocab',label:'Từ vựng'},{id:'dialogue',label:'Bài khoá 🔊'},{id:'grammar',label:'Ngữ pháp'},{id:'flashcard',label:'Flashcard'},{id:'exercise',label:'Bài tập 📝'}];
+let state={lessonId:1,tab:'vocab',search:'',flashIndex:0,flipped:false,exerciseSeed:{}};
+const esc=s=>(s??'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const getLesson=id=>LESSONS.find(x=>x.id===id);
+const norm=s=>(s||'').toString().trim().toLowerCase().replace(/[，。！？、,.!?]/g,'').replace(/\s+/g,' ');
+function speak(text){if(!('speechSynthesis' in window))return; speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text);u.lang='zh-CN';u.rate=.82;u.pitch=1; speechSynthesis.speak(u)}
+function speakDialogue(d){speak(d.lines.map(x=>x.cn).join('。'))}
+function renderSidebar(){
+ const q=state.search.trim().toLowerCase(); const arr=LESSONS.filter(l=>!q||[l.cn,l.vi,l.pinyin].join(' ').toLowerCase().includes(q));
+ document.getElementById('lessonNav').innerHTML=arr.map(l=>`<button class="lesson-btn ${l.id===state.lessonId?'active':''}" data-id="${l.id}"><span class="num">${l.id}</span><span><div class="lesson-cn hanzi">${esc(l.cn)}</div><div class="lesson-vi">${esc(l.vi)}</div></span></button>`).join('');
+ document.querySelectorAll('.lesson-btn').forEach(b=>b.onclick=()=>{state.lessonId=+b.dataset.id;state.tab='vocab';state.flashIndex=0;state.flipped=false;renderAll();scrollTo({top:0,behavior:'smooth'})});
+}
+function renderHero(){
+ const l=getLesson(state.lessonId); document.getElementById('hero').innerHTML=`<div class="hero-top"><div class="hero-seal">${l.id}</div><div class="eyebrow">Bài ${l.id}/15 · New HSK 教程 1 · Cô Thu Lan Ulis</div></div><div class="titles"><div class="cn hanzi">${esc(l.cn)}</div><div class="py">${esc(l.pinyin)}</div></div><div class="vi">${esc(l.vi)}</div><div class="chips">${l.objectives.map(x=>`<span class="chip">${esc(x)}</span>`).join('')}</div>`;
+}
+function renderTabs(){document.getElementById('tabs').innerHTML=TABS.map(t=>`<button class="tab ${t.id===state.tab?'active':''}" data-tab="${t.id}">${t.label}</button>`).join('');document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{state.tab=b.dataset.tab;state.flipped=false;renderTabs();renderContent()})}
+function renderVocab(l){
+ let h=`<div class="section-title">Từ vựng (${l.vocab.length}) · Nhấn “Nét” để xem thứ tự viết chữ Hán</div><table class="vocab-table"><tbody>`;
+ h+=l.vocab.map((v,i)=>`<tr><td class="v-cn hanzi">${esc(v.cn)}</td><td class="v-py">${esc(v.pinyin)}</td><td class="v-pos">${esc(v.pos)}</td><td>${esc(v.vi)}</td><td class="stroke-cell"><div class="stroke-wrap"><div class="stroke" id="stroke-${l.id}-${i}">${Array.from(v.cn).map((ch,j)=>`<div class="stroke-char"><span id="stroke-${l.id}-${i}-${j}" style="display:inline-block;width:48px;height:48px"></span><span class="stroke-label">${esc(ch)}</span></div>`).join('')}</div><button data-stroke="${l.id}-${i}">Nét ✍️</button><div class="stroke-order-panel" id="stroke-order-${l.id}-${i}"></div></div></td></tr>`).join('');
+ h+='</tbody></table>'; if(l.properNouns?.length)h+=`<div class="card"><div class="section-title">Danh từ riêng</div>${l.properNouns.map(p=>`<span class="chip" style="display:inline-block;margin:4px"><b class="hanzi">${esc(p.cn)}</b> · ${esc(p.pinyin)} · ${esc(p.vi)}</span>`).join('')}</div>`; return h;
+}
+function renderDialogue(l){
+ return l.dialogues.map((d,i)=>`<div class="dialogue"><div class="dialogue-head"><span class="label">${esc(d.label)}</span><button class="audio-btn" data-audio="${i}">▶ Phát bài khoá</button></div><div class="note" style="margin:10px 0 14px">📍 ${esc(d.situation)}</div>${d.lines.map(line=>`<div class="line"><div class="speaker">${esc(line.s)}</div><div class="bubble"><div class="line-cn hanzi">${esc(line.cn)}</div><div class="line-py">${esc(line.py)}</div><button class="audio-btn line-audio" data-text="${esc(line.cn)}">🔊 Nghe câu</button></div></div>`).join('')}<button class="translate-btn" data-trans="${i}">Xem bản dịch ▾</button><div class="translation" id="trans-${l.id}-${i}">${esc(d.vi)}</div></div>`).join('');
+}
+function renderGrammar(l){if(!l.grammar.length)return `<div class="card">Bài này tập trung vào từ vựng và giao tiếp cơ bản.</div>`;return l.grammar.map(g=>`<div class="card grammar"><h3 class="hanzi">${esc(g.title)}</h3><p>${esc(g.vi)}</p><div>${g.examples.map(e=>`<span class="example">${esc(e)}</span>`).join('')}</div></div>`).join('')}
+function renderFlash(l){const v=l.vocab[state.flashIndex%l.vocab.length];return `<div class="flash"><div class="flashcard ${state.flipped?'flipped':''}" id="flashcard"><div class="flash-inner"><div class="face front"><div class="big hanzi">${esc(v.cn)}</div><div class="note">Nhấn để lật</div></div><div class="face back"><div class="py">${esc(v.pinyin)}</div><div class="vi">${esc(v.vi)}</div><div>${esc(v.pos)}</div></div></div></div><div class="flash-controls"><button class="small-btn" id="prev">← Trước</button><span>${state.flashIndex+1}/${l.vocab.length}</span><button class="small-btn" id="next">Sau →</button></div></div>`}
+function chunksFor(sentence,l){let s=sentence.replace(/[，。！？、,.!?]/g,'');let words=[...(l.vocab||[]).map(v=>v.cn), '你好','大家','我们','你们','他们','她们','它们','是的','不客气','对不起','没关系','非常','有点儿','一些','这儿','那儿','哪里','哪儿','一个','两个','一个人'];words=[...new Set(words)].sort((a,b)=>b.length-a.length);let out=[];while(s){let w=words.find(x=>s.startsWith(x));if(w){out.push(w);s=s.slice(w.length)}else{out.push(s[0]);s=s.slice(1)}}return out}
+function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function makeExercises(l){
+ const vocab=shuffle(l.vocab).slice(0,3); const meanings=vocab.map(v=>v.vi); 
+ const mcq=vocab.map((v,i)=>({q:`Từ “${v.cn}” có nghĩa là gì?`,options:shuffle([v.vi,...shuffle(l.vocab.filter(x=>x.cn!==v.cn)).slice(0,3).map(x=>x.vi)]),a:v.vi}));
+ const fill=(l.exercises||[]).flatMap(ex=>ex.type==='fill'?ex.items:[]).slice(0,2);
+ const sentenceLines=l.dialogues.flatMap(d=>d.lines).filter(x=>x.cn&&x.cn.length>=5).slice(0,2);
+ const reorder=sentenceLines.map(x=>({q:x.cn,parts:chunksFor(x.cn,l),a:chunksFor(x.cn,l)}));
+ const match=vocab.map(v=>({word:v.cn,a:v.vi,opts:shuffle(meanings)}));
+ const tf=vocab.map((v,i)=>({q:`“${v.cn}” nghĩa là “${v.vi}”.`,a:true})).concat([{q:`“${l.vocab[0].cn}” nghĩa là “${l.vocab[1].vi}”.`,a:false}]).slice(0,3);
+ const situations=l.dialogues.slice(0,2).map(d=>{const correct=d.lines[0].cn;const others=l.dialogues.flatMap(x=>x.lines).map(x=>x.cn).filter(x=>x!==correct);return {s:d.situation,q:'Trong tình huống này, câu nào phù hợp nhất?',options:shuffle([correct,...shuffle(others).slice(0,2)]),a:correct}});
+ return {mcq,fill,reorder,match,tf,situations};
+}
+function renderExercises(l){
+ const ex=makeExercises(l); const counts={mcq:0,fill:0,reorder:0,match:0,tf:0,sit:0}; let h=`<div class="student-box"><div class="section-title">Thông tin học sinh — bắt buộc trước khi nộp bài</div><div class="student-grid"><div class="field"><label>Họ và tên</label><input id="studentName" placeholder="Nguyễn Văn A"></div><div class="field"><label>Lớp</label><input id="studentClass" placeholder="12A1"></div></div><p class="note">Kết quả được lưu trên trình duyệt và có thể xuất thành file để gửi cho giáo viên. Không cần nhập thông tin nhạy cảm.</p></div>`;
+ function type(title,icon,items,render){if(!items.length)return'';return `<div class="card"><div class="type-badge">${icon} ${title}</div>${items.map((it,i)=>render(it,i)).join('')}</div>`}
+ h+=type('Trắc nghiệm','📝',ex.mcq,(it,i)=>{let id=`mcq-${i}`;return `<div class="q">${i+1}. ${esc(it.q)}</div><div class="options">${it.options.map(o=>`<label class="option"><input type="radio" name="${id}" value="${esc(o)}"> <span>${esc(o)}</span></label>`).join('')}</div>`});
+ h+=type('Điền từ','✍️',ex.fill,(it,i)=>`<div class="q">${i+1}. ${esc(it.q)}</div><input class="answer-input" id="fill-${i}" placeholder="Nhập đáp án">`);
+ h+=type('Sắp xếp câu','🔀',ex.reorder,(it,i)=>{let id=`ord-${i}`;return `<div class="q">${i+1}. Sắp xếp thành câu đúng: <span class="note">(nhấn từng mảnh theo thứ tự)</span></div><div class="reorder" id="${id}-pool">${shuffle(it.parts).map((p,j)=>`<button class="word-btn" data-order="${id}" data-value="${esc(p)}">${esc(p)}</button>`).join('')}</div><div class="chosen hanzi" id="${id}-chosen"></div><button class="small-btn" data-reset="${id}">↺ Làm lại</button>`});
+ h+=type('Nối từ','🔗',ex.match,(it,i)=>`<div class="match-row"><div class="match-word hanzi">${esc(it.word)}</div><select class="select match-select" data-match="${i}"><option value="">-- chọn nghĩa --</option>${it.opts.map(o=>`<option value="${esc(o)}">${esc(o)}</option>`).join('')}</select></div>`);
+ h+=type('Đúng / Sai','✅',ex.tf,(it,i)=>`<div class="q">${i+1}. ${esc(it.q)}</div><div class="options"><label class="option"><input type="radio" name="tf-${i}" value="true"> Đúng</label><label class="option"><input type="radio" name="tf-${i}" value="false"> Sai</label></div>`);
+ h+=type('Tình huống','💬',ex.situations,(it,i)=>`<div class="situation">📍 ${esc(it.s)}</div><div class="q">${i+1}. ${esc(it.q)}</div><div class="options">${it.options.map(o=>`<label class="option"><input type="radio" name="sit-${i}" value="${esc(o)}"> <span class="hanzi">${esc(o)}</span></label>`).join('')}</div>`);
+ h+=`<div id="result" class="result"></div><div class="actions"><button class="primary" id="submitExam">Nộp bài & chấm điểm</button><button class="secondary" id="exportResult" style="display:none">Xuất kết quả JSON</button></div><p class="note">💡 Nếu học sinh dùng điện thoại/máy khác với giáo viên, hãy bấm “Xuất kết quả JSON” sau khi nộp và gửi file đó cho giáo viên.</p>`;
+ window.__exercise=ex; return h;
+}
+function renderContent(){
+ const l=getLesson(state.lessonId); const c=document.getElementById('content'); let h='';
+ if(state.tab==='vocab')h=renderVocab(l); else if(state.tab==='dialogue')h=renderDialogue(l); else if(state.tab==='grammar')h=renderGrammar(l); else if(state.tab==='flashcard')h=renderFlash(l); else h=renderExercises(l);
+ c.innerHTML=h+`<div class="footer">Tiếng Trung Cô Thu Lan Ulis · 0912 666 259 · Bài ${l.id}/15</div>`;
+ if(state.tab==='exercise'){const n=localStorage.getItem('hsk1_student_name')||'',cl=localStorage.getItem('hsk1_student_class')||'';if(document.getElementById('studentName')){document.getElementById('studentName').value=n;document.getElementById('studentClass').value=cl;document.getElementById('studentName').oninput=e=>localStorage.setItem('hsk1_student_name',e.target.value);document.getElementById('studentClass').oninput=e=>localStorage.setItem('hsk1_student_class',e.target.value)}}
+ wire(l);
+}
+function wire(l){
+ document.querySelectorAll('.line-audio').forEach(b=>b.onclick=()=>speak(b.dataset.text));
+ document.querySelectorAll('[data-audio]').forEach(b=>b.onclick=()=>speakDialogue(l.dialogues[+b.dataset.audio]));
+ document.querySelectorAll('[data-trans]').forEach(b=>b.onclick=()=>{let e=document.getElementById(`trans-${l.id}-${b.dataset.trans}`);e.classList.toggle('show');b.textContent=e.classList.contains('show')?'Ẩn bản dịch ▴':'Xem bản dịch ▾'});
+ if(state.tab==='flashcard'){document.getElementById('flashcard').onclick=()=>{state.flipped=!state.flipped;renderContent()};document.getElementById('prev').onclick=()=>{state.flashIndex=(state.flashIndex-1+l.vocab.length)%l.vocab.length;state.flipped=false;renderContent()};document.getElementById('next').onclick=()=>{state.flashIndex=(state.flashIndex+1)%l.vocab.length;state.flipped=false;renderContent()}}
+ if(state.tab==='vocab'){
+  document.querySelectorAll('[data-stroke]').forEach(b=>b.onclick=()=>{
+   const [lid,i]=b.dataset.stroke.split('-');
+   const l=getLesson(+lid), v=l.vocab[+i];
+   const panel=document.getElementById(`stroke-order-${lid}-${i}`);
+   if(!panel) return;
+   panel.classList.toggle('show');
+   if(!panel.classList.contains('show')) return;
+   if(panel.dataset.ready==='1') return;
+   panel.dataset.ready='1';
+
+   const chars=Array.from(v.cn);
+   panel.innerHTML=`<div class="stroke-order-title">📌 Hoạt hình thứ tự nét: “${esc(v.cn)}”</div>
+     <div class="stroke-source">Nguồn SVG hoạt hình: Make Me A Hanzi · GitHub Raw. Dữ liệu SVG chứa sẵn trình tự nét, không dùng fetch/CDN.</div>
+     <div class="stroke-char-list"></div>`;
+   const list=panel.querySelector('.stroke-char-list');
+
+   chars.forEach((ch,idx)=>{
+    const uid=`stroke-anim-${lid}-${i}-${idx}`;
+    const base=`stroke-step-${lid}-${i}-${idx}`;
+    const row=document.createElement('div');
+    row.style.marginBottom='18px';
+    row.innerHTML=`
+      <div class="stroke-sequence">
+        <b class="hanzi">${esc(ch)}</b>
+        · <b class="stroke-count" id="${uid}-count">SVG hoạt hình · Unicode ${ch.codePointAt(0)}</b>
+      </div>
+      <div class="stroke-animation-box">
+        <div class="stroke-animation-canvas" id="${uid}">
+          <img class="stroke-svg" alt="Thứ tự nét ${esc(ch)}" src="${strokeSvgUrl(ch)}"
+               onerror="this.onerror=null;this.src='${strokeFallbackUrl(ch)}'" />
+        </div>
+        <div>
+          <div class="stroke-current" id="${uid}-current">▶ Hoạt hình tự chạy <small>· chữ ${esc(ch)}</small></div>
+          <div class="stroke-animation-controls">
+            <button type="button" data-replay="${uid}">↻ Phát lại</button>
+            <button type="button" data-open-svg="${uid}">↗ Mở nguồn SVG</button>
+          </div>
+          ${strokeHint(ch)?`<div class="stroke-note">Số nét tham khảo: <b>${strokeHint(ch)}</b>. Số nét hiển thị theo SVG chuẩn từ nguồn dữ liệu.</div>`:''}
+        </div>
+      </div>
+      <div class="stroke-steps" id="${base}-steps"></div>`;
+    list.appendChild(row);
+
+    const img=row.querySelector('.stroke-svg');
+    const current=row.querySelector(`#${uid}-current`);
+    const replay=row.querySelector(`[data-replay="${uid}"]`);
+    const openSvg=row.querySelector(`[data-open-svg="${uid}"]`);
+    const steps=row.querySelector(`#${base}-steps`);
+
+    const showSteps=(n)=>{
+      steps.innerHTML='';
+      if(!n) return;
+      for(let k=1;k<=n;k++){
+        const card=document.createElement('div');
+        card.className='stroke-step';
+        card.innerHTML=`<div class="stroke-step-num">Nét ${k}</div><div class="stroke-step-char hanzi">${esc(ch)}</div>`;
+        card.title=`Thứ tự nét ${k}`;
+        card.onclick=()=>{
+          steps.querySelectorAll('.stroke-step').forEach(x=>x.classList.remove('active'));
+          card.classList.add('active');
+          current.innerHTML=`✍️ Thứ tự <small>· nét ${k}/${n}</small>`;
+        };
+        steps.appendChild(card);
+      }
+    };
+
+    replay.onclick=()=>{
+      const src=img.src;
+      img.src='';
+      requestAnimationFrame(()=>{img.src=src; current.innerHTML='▶ Đang phát lại <small>· hoạt hình SVG</small>';});
+    };
+    openSvg.onclick=()=>window.open(strokeSvgUrl(ch),'_blank','noopener');
+    img.addEventListener('load',()=>{
+      current.innerHTML='✅ Đã tải <small>· hoạt hình SVG đang chạy</small>';
+      const n=strokeHint(ch); showSteps(n);
+    });
+    img.addEventListener('error',()=>{
+      current.innerHTML='⚠️ Không tải được SVG này. Bạn có thể mở nguồn dự phòng trực tiếp.';
+    });
+   });
+  });
+ }
+ if(state.tab==='exercise'){
+  document.querySelectorAll('[data-order]').forEach(btn=>btn.onclick=()=>{const id=btn.dataset.order, chosen=document.getElementById(id+'-chosen');if(btn.classList.contains('used'))return;btn.classList.add('used');chosen.dataset.parts=(chosen.dataset.parts?chosen.dataset.parts+'|':'')+btn.dataset.value;chosen.textContent=chosen.dataset.parts.split('|').join(' ')});
+  document.querySelectorAll('[data-reset]').forEach(btn=>btn.onclick=()=>{const id=btn.dataset.reset;document.querySelectorAll(`[data-order="${id}"]`).forEach(x=>x.classList.remove('used'));let e=document.getElementById(id+'-chosen');e.dataset.parts='';e.textContent=''});
+  document.getElementById('submitExam').onclick=()=>grade(l);
+ }
+}
+function grade(l){
+ const ex=window.__exercise;let correct=0,total=0;
+ ex.mcq.forEach((it,i)=>{total++;const v=document.querySelector(`input[name="mcq-${i}"]:checked`)?.value;if(norm(v)===norm(it.a))correct++});
+ ex.fill.forEach((it,i)=>{total++;const v=document.getElementById(`fill-${i}`)?.value;if(norm(v)===norm(it.a))correct++});
+ ex.reorder.forEach((it,i)=>{total++;const v=document.getElementById(`ord-${i}-chosen`)?.dataset.parts||'';if(norm(v.replace(/\|/g,' '))===norm(it.a.join(' ')))correct++});
+ ex.match.forEach((it,i)=>{total++;const v=document.querySelector(`[data-match="${i}"]`)?.value;if(norm(v)===norm(it.a))correct++});
+ ex.tf.forEach((it,i)=>{total++;const v=document.querySelector(`input[name="tf-${i}"]:checked`)?.value;if((v==='true')===it.a)correct++});
+ ex.situations.forEach((it,i)=>{total++;const v=document.querySelector(`input[name="sit-${i}"]:checked`)?.value;if(norm(v)===norm(it.a))correct++});
+ const name=document.getElementById('studentName').value.trim(), cls=document.getElementById('studentClass').value.trim();
+ if(!name||!cls){alert('Vui lòng nhập Họ và tên và Lớp trước khi nộp bài.');return}
+ const result={id:crypto.randomUUID?crypto.randomUUID():String(Date.now()),student:name,className:cls,lessonId:l.id,lesson:l.cn,score:correct,total,percent:Math.round(correct/total*100),submittedAt:new Date().toISOString()};
+ const all=JSON.parse(localStorage.getItem('hsk1_results_v2')||'[]');all.push(result);localStorage.setItem('hsk1_results_v2',JSON.stringify(all));
+ const box=document.getElementById('result');box.classList.add('show');box.innerHTML=`<div class="score">${result.score}/${result.total} · ${result.percent}%</div><div style="margin-top:6px">Đã ghi nhận kết quả của <b>${esc(name)}</b> · lớp <b>${esc(cls)}</b> · Bài ${l.id}.</div>`;
+ document.getElementById('exportResult').style.display='inline-block';document.getElementById('exportResult').onclick=()=>downloadJSON(result,`ket-qua-${name.replace(/\s+/g,'-')}-bai-${l.id}.json`);
+}
+function downloadJSON(obj,filename){const blob=new Blob([JSON.stringify(obj,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)}
+function renderAll(){renderSidebar();renderHero();renderTabs();renderContent()}
+document.getElementById('searchInput').oninput=e=>{state.search=e.target.value;renderSidebar()};
+document.getElementById('menuToggle').onclick=()=>document.getElementById('sidebar').classList.toggle('collapsed');
+if(innerWidth<=940)document.getElementById('sidebar').classList.add('collapsed');
+renderAll();
+</script></body></html>
